@@ -1,0 +1,167 @@
+{% comment %}
+  sections/banner-carousel-4.liquid
+  - Carrusel con 4 slides (cada uno: imagen desktop + móvil + alt opcional + link opcional)
+  - Autoplay: 3s por slide
+  - Online Store 2.0 (2025)
+{% endcomment %}
+
+<section class="banner-carousel" id="banner-carousel-{{ section.id }}" aria-roledescription="carousel">
+    <div class="bc-track" data-autoplay="true" data-interval="3000">
+        {%- assign slides = (1..4) -%}
+
+        {%- for i in slides -%}
+            {%- assign d = section.settings["image_desktop_" | append: i ] -%}
+            {%- assign m = section.settings["image_mobile_"  | append: i ] -%}
+            {%- assign alt = section.settings["alt_" | append: i ] | default: shop.name -%}
+            {%- assign link = section.settings["link_" | append: i ] -%}
+
+            {%- if d != blank or m != blank -%}
+                <div class="bc-slide" role="group" aria-label="Slide {{ forloop.index }} de 4">
+                {%- if link != blank -%}<a href="{{ link }}">{%- endif -%}
+                        <picture>
+                            {%- if d != blank -%}
+                                <source media="(min-width: 750px)" srcset="{{ d | image_url: width: 2000 }}">
+                            {%- endif -%}
+                            {%- comment -%}
+                              Fallback móvil (si no hay móvil, usamos desktop; si no hay desktop, usamos móvil).
+                            {%- endcomment -%}
+                            {%- assign mobile_src = m | default: d -%}
+                            {%- if mobile_src != blank -%}
+                                <img
+                                        src="{{ mobile_src | image_url: width: 1000 }}"
+                                        alt="{{ alt | escape }}"
+                                        loading="eager"
+                                        class="bc-img"
+                                >
+                            {%- endif -%}
+                        </picture>
+                        {%- if link != blank -%}</a>{%- endif -%}
+                </div>
+            {%- endif -%}
+        {%- endfor -%}
+    </div>
+
+    <div class="bc-dots" aria-hidden="true">
+        <button class="bc-dot" data-go="0" aria-label="Ir al slide 1"></button>
+        <button class="bc-dot" data-go="1" aria-label="Ir al slide 2"></button>
+        <button class="bc-dot" data-go="2" aria-label="Ir al slide 3"></button>
+        <button class="bc-dot" data-go="3" aria-label="Ir al slide 4"></button>
+    </div>
+</section>
+
+<style>
+    #banner-carousel-{{ section.id }} {
+        position: relative; overflow: hidden; width: 100%;
+    }
+    #banner-carousel-{{ section.id }} .bc-track {
+        display: flex; will-change: transform; transition: transform .6s ease-in-out;
+    }
+    #banner-carousel-{{ section.id }} .bc-slide {
+        flex: 0 0 100%;
+    }
+    #banner-carousel-{{ section.id }} .bc-img {
+        display: block; width: 100%; height: auto; object-fit: cover;
+    }
+    #banner-carousel-{{ section.id }} .bc-dots {
+        position: absolute; left: 50%; bottom: 12px; transform: translateX(-50%);
+        display: flex; gap: 8px; z-index: 2;
+    }
+    #banner-carousel-{{ section.id }} .bc-dot {
+        width: 10px; height: 10px; border-radius: 50%; border: 0; opacity: .5; cursor: pointer;
+        background: currentColor;
+    }
+    #banner-carousel-{{ section.id }} .bc-dot.is-active { opacity: 1; }
+    @media (prefers-reduced-motion: reduce) {
+        #banner-carousel-{{ section.id }} .bc-track { transition: none; }
+    }
+</style>
+
+<script>
+    (function() {
+        const root = document.getElementById('banner-carousel-{{ section.id }}');
+        if (!root) return;
+
+        const track = root.querySelector('.bc-track');
+        const slides = root.querySelectorAll('.bc-slide');
+        const dots = root.querySelectorAll('.bc-dot');
+
+        const intervalMs = parseInt(track.dataset.interval || '3000', 10);
+        const autoplay = track.dataset.autoplay === 'true';
+        const slideCount = slides.length;
+        if (slideCount <= 1) {
+            dots.forEach((d, i) => { if (i >= slideCount) d.style.display = 'none'; });
+            return; // nada que rotar
+        }
+
+        let index = 0, timer = null;
+
+        function goTo(i) {
+            index = (i + slideCount) % slideCount;
+            track.style.transform = `translateX(-${index * 100}%)`;
+            dots.forEach((d, di) => d.classList.toggle('is-active', di === index));
+        }
+
+        function start() {
+            if (!autoplay) return;
+            stop();
+            timer = setInterval(() => goTo(index + 1), intervalMs);
+        }
+        function stop() { if (timer) { clearInterval(timer); timer = null; } }
+
+        dots.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                const go = parseInt(btn.dataset.go || '0', 10);
+                goTo(go);
+                start();
+            });
+        });
+
+        // Pause on hover (desktop)
+        root.addEventListener('mouseenter', stop);
+        root.addEventListener('mouseleave', start);
+
+        // Init
+        dots.forEach((d, i) => { if (i >= slideCount) d.style.display = 'none'; });
+        goTo(0);
+        start();
+
+        // Re-init when Theme Editor changes settings (Shopify editor)
+        document.addEventListener('shopify:section:load', (e) => {
+            if (e.detail.sectionId === '{{ section.id }}') { stop(); start(); }
+        });
+    })();
+</script>
+
+{% schema %}
+{
+  "name": "Carrusel (4 imágenes: desktop + móvil)",
+  "settings": [
+    { "type": "header", "content": "Slide 1" },
+    { "type": "image_picker", "id": "image_desktop_1", "label": "Imagen escritorio 1" },
+    { "type": "image_picker", "id": "image_mobile_1",  "label": "Imagen móvil 1" },
+    { "type": "text", "id": "alt_1", "label": "Alt 1" },
+    { "type": "url",  "id": "link_1", "label": "Link 1 (opcional)" },
+
+    { "type": "header", "content": "Slide 2" },
+    { "type": "image_picker", "id": "image_desktop_2", "label": "Imagen escritorio 2" },
+    { "type": "image_picker", "id": "image_mobile_2",  "label": "Imagen móvil 2" },
+    { "type": "text", "id": "alt_2", "label": "Alt 2" },
+    { "type": "url",  "id": "link_2", "label": "Link 2 (opcional)" },
+
+    { "type": "header", "content": "Slide 3" },
+    { "type": "image_picker", "id": "image_desktop_3", "label": "Imagen escritorio 3" },
+    { "type": "image_picker", "id": "image_mobile_3",  "label": "Imagen móvil 3" },
+    { "type": "text", "id": "alt_3", "label": "Alt 3" },
+    { "type": "url",  "id": "link_3", "label": "Link 3 (opcional)" },
+
+    { "type": "header", "content": "Slide 4" },
+    { "type": "image_picker", "id": "image_desktop_4", "label": "Imagen escritorio 4" },
+    { "type": "image_picker", "id": "image_mobile_4",  "label": "Imagen móvil 4" },
+    { "type": "text", "id": "alt_4", "label": "Alt 4" },
+    { "type": "url",  "id": "link_4", "label": "Link 4 (opcional)" }
+  ],
+  "presets": [
+    { "name": "Carrusel 4 (desktop + móvil)" }
+  ]
+}
+{% endschema %}
