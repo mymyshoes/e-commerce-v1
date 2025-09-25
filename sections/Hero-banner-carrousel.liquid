@@ -10,10 +10,12 @@
         {%- assign slides = (1..4) -%}
 
         {%- for i in slides -%}
-            {%- assign d = section.settings["image_desktop_" | append: i ] -%}
-            {%- assign m = section.settings["image_mobile_"  | append: i ] -%}
-            {%- assign alt = section.settings["alt_" | append: i ] | default: shop.name -%}
-            {%- assign link = section.settings["link_" | append: i ] -%}
+            {%- assign d = section.settings["image_desktop_" | concat: i ] -%}
+            {%- assign m = section.settings["image_mobile_"  | concat: i ] -%}
+            {%- assign alt = section.settings["alt_" | concat: i ] | default: shop.name -%}
+            {%- assign link = section.settings["link_" | concat: i ] -%}
+
+
 
             {%- if d != blank or m != blank -%}
                 <div class="bc-slide" role="group" aria-label="Slide {{ forloop.index }} de 4">
