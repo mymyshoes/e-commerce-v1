@@ -10,10 +10,16 @@
         {%- assign slides = (1..4) -%}
 
         {%- for i in slides -%}
-            {%- assign d = section.settings["image_desktop_" | concat: i ] -%}
-            {%- assign m = section.settings["image_mobile_"  | concat: i ] -%}
-            {%- assign alt = section.settings["alt_" | concat: i ] | default: shop.name -%}
-            {%- assign link = section.settings["link_" | concat: i ] -%}
+            {%- assign key_d = "image_desktop_" | append: i -%}
+            {%- assign key_m = "image_mobile_"  | append: i -%}
+            {%- assign key_alt = "alt_" | append: i -%}
+            {%- assign key_link = "link_" | append: i -%}
+
+            {%- assign d = section.settings[key_d] -%}
+            {%- assign m = section.settings[key_m] -%}
+            {%- assign alt = section.settings[key_alt] | default: shop.name -%}
+            {%- assign link = section.settings[key_link] -%}
+
 
 
 
