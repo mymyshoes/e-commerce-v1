@@ -11,6 +11,23 @@
   "type": "footer",
   "name": "Footer",
   "sections": {
+    "footer_custom_jDkUAU": {
+      "type": "Footer-custom",
+      "name": "Footer MYMY",
+      "settings": {
+        "logo": "shopify://shop_images/logo-mymy-shoes.png",
+        "instagram_url": "",
+        "facebook_url": "",
+        "text": "Let’s stay in touch! Sign up to our newsletter and get the best deals!",
+        "show_newsletter": true,
+        "newsletter_placeholder": "Insert your email address here",
+        "newsletter_btn": "Subscribe now",
+        "menu_1_title": "Help",
+        "menu_1": "",
+        "menu_2_title": "Other",
+        "menu_2": ""
+      }
+    },
     "footer": {
       "type": "footer",
       "blocks": {
@@ -55,6 +72,7 @@
             "border_width": 1,
             "border_opacity": 100,
             "border_radius": 0,
+            "placeholder": "",
             "toggle_overlay": false,
             "overlay_color": "#00000026",
             "overlay_style": "solid",
@@ -94,6 +112,7 @@
                 "border_width": 1,
                 "border_opacity": 100,
                 "border_radius": 0,
+                "placeholder": "",
                 "toggle_overlay": false,
                 "overlay_color": "#00000026",
                 "overlay_style": "solid",
@@ -169,6 +188,8 @@
                 "width": "custom",
                 "custom_width": 50,
                 "inherit_color_scheme": true,
+                "heading": "",
+                "heading_preset": "h3",
                 "color_scheme": "scheme-1",
                 "border_style": "all",
                 "border_width": 1,
@@ -205,6 +226,7 @@
               "type": "_footer-copyright",
               "static": true,
               "settings": {
+                "show_powered_by": true,
                 "font_size": "0.75rem",
                 "case": "none"
               },
@@ -282,6 +304,7 @@
         "group_tbFfTQ",
         "footer_utilities_KRaGcH"
       ],
+      "disabled": true,
       "name": "Footer",
       "settings": {
         "content_direction": "column",
@@ -304,6 +327,7 @@
     }
   },
   "order": [
+    "footer_custom_jDkUAU",
     "footer"
   ]
 }
