@@ -24,10 +24,10 @@
         "link_4": ""
       }
     },
-    "collection_list_Gyhekk": {
+    "collection_list_6YHxwF": {
       "type": "collection-list",
       "blocks": {
-        "group_bH9LHC": {
+        "group_CnHiBY": {
           "type": "group",
           "name": "t:names.header",
           "settings": {
@@ -67,11 +67,11 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "text_h8K9Yy": {
+            "text_raTfqL": {
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<h3>Shop by collection</h3>",
+                "text": "<h3>Categorías </h3>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -95,7 +95,7 @@
             }
           },
           "block_order": [
-            "text_h8K9Yy"
+            "text_raTfqL"
           ]
         },
         "static-collection-card": {
@@ -104,18 +104,18 @@
           "static": true,
           "settings": {
             "placement": "below_image",
-            "horizontal_alignment": "flex-start",
+            "horizontal_alignment": "center",
             "vertical_alignment": "center",
-            "collection_card_gap": 8,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "border": "none",
+            "collection_card_gap": 6,
+            "inherit_color_scheme": false,
+            "color_scheme": "scheme-3",
+            "border": "solid",
             "border_width": 1,
             "border_opacity": 100,
-            "border_radius": 0
+            "border_radius": 22
           },
           "blocks": {
-            "collection_title_eFFTnt": {
+            "collection_title_7NGcmG": {
               "type": "collection-title",
               "name": "t:names.collection_title",
               "settings": {
@@ -159,22 +159,25 @@
             }
           },
           "block_order": [
-            "collection_title_eFFTnt"
+            "collection_title_7NGcmG"
           ]
         }
       },
       "block_order": [
-        "group_bH9LHC"
+        "group_CnHiBY"
       ],
       "name": "t:names.collections_carousel",
       "settings": {
         "collection_list": [
+          "casual",
+          "botas-botines",
           "deportivos",
-          "casual"
+          "dotaciones",
+          "zuecos"
         ],
         "layout_type": "carousel",
         "carousel_on_mobile": false,
-        "columns": 3,
+        "columns": 5,
         "mobile_columns": "2",
         "mobile_card_size": "60cqw",
         "columns_gap": 8,
@@ -395,7 +398,7 @@
   },
   "order": [
     "hero_banner_carrousel_zzKmQY",
-    "collection_list_Gyhekk",
+    "collection_list_6YHxwF",
     "banner_responsive_4cbGVH",
     "product_list_fa6P9H"
   ]
