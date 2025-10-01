@@ -16,8 +16,8 @@
       "name": "Footer MYMY",
       "settings": {
         "logo": "shopify://shop_images/logo-mymy-shoes.png",
-        "instagram_url": "",
-        "facebook_url": "",
+        "instagram_url": "https://www.instagram.com/mymy.shoescol?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        "facebook_url": "https://www.facebook.com/profile.php?id=61576805021721",
         "text": "Let’s stay in touch! Sign up to our newsletter and get the best deals!",
         "show_newsletter": true,
         "newsletter_placeholder": "Insert your email address here",
