@@ -1,0 +1,100 @@
+<section id="promo-grid-{{ section.id }}" class="promo-grid">
+    <div class="promo-grid__wrap">
+        {% for block in section.blocks %}
+            <div class="promo-grid__item promo-grid__item--{{ block.type }}">
+            {% if block.settings.link != blank %}
+                <a href="{{ block.settings.link }}">
+                    {% endif %}
+
+                    {% if block.settings.image != blank %}
+                        {{ block.settings.image | image_url: width: 800 | image_tag: alt: block.settings.alt }}
+                    {% endif %}
+
+                    {% if block.settings.heading != blank %}
+                        <h3 class="promo-grid__heading">{{ block.settings.heading }}</h3>
+                    {% endif %}
+                    {% if block.settings.text != blank %}
+                        <p class="promo-grid__text">{{ block.settings.text }}</p>
+                    {% endif %}
+
+                    {% if block.settings.link != blank %}
+                </a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+<style>
+    #promo-grid-{{ section.id }} .promo-grid__wrap {
+        display: grid;
+        grid-template-areas:
+      "big banner"
+      "big small1"
+      "big small2";
+        grid-template-columns: 2fr 2fr;
+        gap: 16px;
+    }
+    #promo-grid-{{ section.id }} .promo-grid__item img {
+        width:100%; height:auto; display:block; border-radius:8px;
+    }
+    .promo-grid__item--big { grid-area: big; }
+    .promo-grid__item--banner { grid-area: banner; }
+    .promo-grid__item--small1 { grid-area: small1; }
+    .promo-grid__item--small2 { grid-area: small2; }
+
+    .promo-grid__heading { margin:8px 0 0; font-weight:600; font-size:1.2rem; }
+    .promo-grid__text { font-size:.9rem; margin:4px 0 0; }
+</style>
+
+{% schema %}
+{
+  "name": "MYMY Promo Grid",
+  "blocks": [
+    {
+      "type": "big",
+      "name": "Caja grande vertical",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Imagen" },
+        { "type": "text", "id": "alt", "label": "Alt", "default": "Producto" },
+        { "type": "text", "id": "heading", "label": "Título", "default": "MYMY Shoes" },
+        { "type": "text", "id": "text", "label": "Texto" },
+        { "type": "url", "id": "link", "label": "Enlace" }
+      ]
+    },
+    {
+      "type": "banner",
+      "name": "Banner horizontal",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Imagen" },
+        { "type": "text", "id": "alt", "label": "Alt", "default": "Promoción" },
+        { "type": "heading", "id": "heading", "label": "Título" },
+        { "type": "text", "id": "text", "label": "Texto" },
+        { "type": "url", "id": "link", "label": "Enlace" }
+      ]
+    },
+    {
+      "type": "small1",
+      "name": "Caja pequeña 1",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Imagen" },
+        { "type": "text", "id": "alt", "label": "Alt", "default": "Producto" },
+        { "type": "url", "id": "link", "label": "Enlace" }
+      ]
+    },
+    {
+      "type": "small2",
+      "name": "Caja pequeña 2",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Imagen" },
+        { "type": "text", "id": "alt", "label": "Alt", "default": "Producto" },
+        { "type": "url", "id": "link", "label": "Enlace" }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    { "name": "MYMY Promo Grid", "blocks": [ { "type": "big" }, { "type": "banner" }, { "type": "small1" }, { "type": "small2" } ] }
+  ]
+}
+{% endschema %}
