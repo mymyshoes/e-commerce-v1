@@ -2,12 +2,25 @@
     <div class="promo-grid__wrap">
         {% for block in section.blocks %}
             <div class="promo-grid__item promo-grid__item--{{ block.type }}">
-            {% if block.settings.link != blank %}
-                <a href="{{ block.settings.link }}">
-                    {% endif %}
+                {% assign has_link = block.settings.link != blank %}
+            {% if has_link %}<a href="{{ block.settings.link }}">{% endif %}
 
                     {% if block.settings.image != blank %}
-                        {{ block.settings.image | image_url: width: 800 | image_tag: alt: block.settings.alt }}
+                        {{ block.settings.image | image_url: width: 1200 | image_tag: alt: block.settings.alt, class: 'promo-grid__img' }}
+                    {% else %}
+                        {%- comment -%} Placeholder si no hay imagen {%- endcomment -%}
+                        <div class="promo-grid__ph">
+                            {% case block.type %}
+                                {% when 'big' %}
+                                    <div class="ph-logo">mymy <span>shoes</span></div>
+                                    <div class="ph-caption">Sube una imagen alta (vertical)</div>
+                                {% when 'banner' %}
+                                    <div class="ph-badge">50% OFF</div>
+                                    <div class="ph-caption">Banner horizontal</div>
+                                {% when 'small1' or 'small2' %}
+                                    <div class="ph-caption">Caja pequeña</div>
+                            {% endcase %}
+                        </div>
                     {% endif %}
 
                     {% if block.settings.heading != blank %}
@@ -17,48 +30,82 @@
                         <p class="promo-grid__text">{{ block.settings.text }}</p>
                     {% endif %}
 
-                    {% if block.settings.link != blank %}
-                </a>
-                {% endif %}
+                    {% if has_link %}</a>{% endif %}
             </div>
         {% endfor %}
     </div>
 </section>
 
 <style>
-    #promo-grid-{{ section.id }} .promo-grid__wrap {
-        display: grid;
+    #promo-grid-{{ section.id }} .promo-grid__wrap{
+        display:grid;
         grid-template-areas:
       "big banner"
       "big small1"
       "big small2";
-        grid-template-columns: 2fr 2fr;
-        gap: 16px;
+        grid-template-columns: 1.6fr 1.4fr;
+        gap:16px;
     }
-    #promo-grid-{{ section.id }} .promo-grid__item img {
-        width:100%; height:auto; display:block; border-radius:8px;
-    }
-    .promo-grid__item--big { grid-area: big; }
-    .promo-grid__item--banner { grid-area: banner; }
-    .promo-grid__item--small1 { grid-area: small1; }
-    .promo-grid__item--small2 { grid-area: small2; }
 
-    .promo-grid__heading { margin:8px 0 0; font-weight:600; font-size:1.2rem; }
-    .promo-grid__text { font-size:.9rem; margin:4px 0 0; }
+    /* Áreas */
+    .promo-grid__item--big{ grid-area:big; }
+    .promo-grid__item--banner{ grid-area:banner; }
+    .promo-grid__item--small1{ grid-area:small1; }
+    .promo-grid__item--small2{ grid-area:small2; }
+
+    .promo-grid__item{
+        position:relative;
+        border-radius:14px;
+        overflow:hidden;
+        background:#f3f4f6;
+        outline:1px solid rgba(0,0,0,.08);
+    }
+    .promo-grid__img{ display:block; width:100%; height:auto; }
+
+    /* Texto inferior opcional */
+    .promo-grid__heading{ margin:10px 10px 0; font-weight:600; font-size:1.05rem; }
+    .promo-grid__text{ margin:4px 10px 10px; color:#444; font-size:.92rem; }
+
+    /* Placeholder styles */
+    .promo-grid__ph{
+        display:flex; align-items:center; justify-content:center;
+        min-height:240px; width:100%; color:#222;
+        background: linear-gradient(135deg,#fafafa,#ececec);
+        position:relative; text-align:center;
+    }
+    .promo-grid__item--big .promo-grid__ph{ min-height:520px; }
+    .promo-grid__item--banner .promo-grid__ph{ min-height:240px; }
+    .ph-logo{ font-weight:700; font-size:2.2rem; letter-spacing:.5px; }
+    .ph-logo span{ display:block; font-weight:600; font-size:.9rem; text-transform:uppercase; letter-spacing:2px; margin-top:4px; }
+    .ph-badge{ font-weight:800; font-size:2rem; color:#e11d48; }
+    .ph-caption{ position:absolute; bottom:10px; left:50%; transform:translateX(-50%); font-size:.85rem; color:#6b7280; }
+
+    /* Responsive */
+    @media (max-width: 990px){
+        #promo-grid-{{ section.id }} .promo-grid__wrap{
+            grid-template-areas:
+        "big"
+        "banner"
+        "small1"
+        "small2";
+            grid-template-columns: 1fr;
+        }
+        .promo-grid__item--big .promo-grid__ph{ min-height:420px; }
+    }
 </style>
 
 {% schema %}
 {
-  "name": "MYMY Promo",
+  "name": "MYMY Promo Grid",
   "blocks": [
     {
       "type": "big",
       "name": "Caja grande vertical",
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Imagen" },
-        { "type": "text", "id": "alt", "label": "Alt", "default": "Producto" },
+        { "type": "text", "id": "alt", "label": "Alt", "default": "Producto destacado" },
         { "type": "text", "id": "heading", "label": "Título", "default": "MYMY Shoes" },
-        { "type": "text", "id": "text", "label": "Texto" },
+        { "type": "text", "id": "text", "label": "Texto", "default": "" },
         { "type": "url", "id": "link", "label": "Enlace" }
       ]
     },
@@ -68,8 +115,8 @@
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Imagen" },
         { "type": "text", "id": "alt", "label": "Alt", "default": "Promoción" },
-        { "type": "heading", "id": "heading", "label": "Título" },
-        { "type": "text", "id": "text", "label": "Texto" },
+        { "type": "text", "id": "heading", "label": "Título", "default": "MYMY DISCOUNT 50%" },
+        { "type": "text", "id": "text", "label": "Texto", "default": "300+% OFF • NOW" },
         { "type": "url", "id": "link", "label": "Enlace" }
       ]
     },
@@ -79,6 +126,8 @@
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Imagen" },
         { "type": "text", "id": "alt", "label": "Alt", "default": "Producto" },
+        { "type": "text", "id": "heading", "label": "Título", "default": "Modelo Aurora" },
+        { "type": "text", "id": "text", "label": "Texto", "default": "" },
         { "type": "url", "id": "link", "label": "Enlace" }
       ]
     },
@@ -88,6 +137,8 @@
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Imagen" },
         { "type": "text", "id": "alt", "label": "Alt", "default": "Producto" },
+        { "type": "text", "id": "heading", "label": "Título", "default": "Modelo Nebula" },
+        { "type": "text", "id": "text", "label": "Texto", "default": "" },
         { "type": "url", "id": "link", "label": "Enlace" }
       ]
     }
@@ -95,12 +146,12 @@
   "max_blocks": 4,
   "presets": [
     {
-      "name": "MYMY Promo",
+      "name": "MYMY Promo Grid",
       "blocks": [
-        { "type": "big" },
-        { "type": "banner" },
-        { "type": "small1" },
-        { "type": "small2" }
+        { "type": "big", "settings": { "heading": "MYMY shoes", "text": "" } },
+        { "type": "banner", "settings": { "heading": "MYMY DISCOUNT 50%", "text": "300+% OFF · NOW" } },
+        { "type": "small1", "settings": { "heading": "Sneaker Beige" } },
+        { "type": "small2", "settings": { "heading": "Cross Blanco" } }
       ]
     }
   ]
