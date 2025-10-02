@@ -9,6 +9,8 @@
 {% assign gap = section.settings.gap | default: 12 %}
 {% assign radius = section.settings.radius | default: 16 %}
 {% assign accent = section.settings.accent | default: '#f8ccd2' %}
+{% assign logo_max_width = section.settings.logo_max_width | default: 200 %}
+{% assign prod_img_max_width = section.settings.prod_img_max_width | default: 300 %}
 
 <section
         id="mymy-grid-{{ section.id }}"
@@ -32,19 +34,19 @@
 
                     {%- if left_block.settings.logo != blank -%}
                         <div class="brand">
-                            {{ left_block.settings.logo | image_url: width: 180 | image_tag: alt: left_block.settings.logo_alt, class: 'brand-img' }}
+                            {{ left_block.settings.logo | image_url: width: 360 | image_tag: alt: left_block.settings.logo_alt, class: 'brand-img' }}
                         </div>
                     {%- endif -%}
 
                     <div class="prod-stack">
                         {%- if left_block.settings.img1 != blank -%}
-                            {{ left_block.settings.img1 | image_url: width: 500 | image_tag: alt: left_block.settings.alt1, class: 'prod-img' }}
+                            {{ left_block.settings.img1 | image_url: width: 800 | image_tag: alt: left_block.settings.alt1, class: 'prod-img' }}
                         {%- else -%}
                             <div class="ph ph--prod">Imagen 1</div>
                         {%- endif -%}
 
                         {%- if left_block.settings.img2 != blank -%}
-                            {{ left_block.settings.img2 | image_url: width: 500 | image_tag: alt: left_block.settings.alt2, class: 'prod-img' }}
+                            {{ left_block.settings.img2 | image_url: width: 800 | image_tag: alt: left_block.settings.alt2, class: 'prod-img' }}
                         {%- else -%}
                             <div class="ph ph--prod">Imagen 2</div>
                         {%- endif -%}
@@ -127,11 +129,21 @@
         justify-content: center;
     }
 
-    /* Izquierda (logo + 2 productos) */
-    #mymy-grid-{{ section.id }} .brand{ display:flex; justify-content:center; padding: 14px 10px 0; }
-    #mymy-grid-{{ section.id }} .brand-img{ height:auto; width:auto; max-width: 55%; }
-    #mymy-grid-{{ section.id }} .prod-stack{ padding: 8px 10px 16px; }
-    #mymy-grid-{{ section.id }} .prod-img{ display:block; width: 88%; margin: 8px auto; height:auto; object-fit: contain; }
+    /* Logo con control desde schema */
+    #mymy-grid-{{ section.id }} .brand-img {
+        max-width: {{ logo_max_width }}px;
+        height:auto;
+        width:auto;
+    }
+
+    /* Productos con control desde schema */
+    #mymy-grid-{{ section.id }} .prod-img {
+        max-width: {{ prod_img_max_width }}px;
+        width: 100%;
+        margin: 8px auto;
+        height:auto;
+        object-fit: contain;
+    }
 
     /* Banner promo */
     #mymy-grid-{{ section.id }} .banner-img{ width:100%; height:auto; display:block; object-fit: cover; }
@@ -150,7 +162,6 @@
     /* Responsive */
     @media (max-width: 980px){
         #mymy-grid-{{ section.id }} .grid-wrap{ grid-template-columns: 1fr; }
-        #mymy-grid-{{ section.id }} .brand-img{ max-width: 45%; }
     }
 </style>
 
@@ -160,7 +171,9 @@
   "settings": [
     { "type": "color", "id": "accent", "label": "Color borde", "default": "#f8ccd2" },
     { "type": "range", "id": "radius", "label": "Radio esquinas (px)", "min": 0, "max": 30, "step": 1, "default": 16 },
-    { "type": "range", "id": "gap", "label": "Espacio entre cards (px)", "min": 8, "max": 32, "step": 1, "default": 12 }
+    { "type": "range", "id": "gap", "label": "Espacio entre cards (px)", "min": 8, "max": 32, "step": 1, "default": 12 },
+    { "type": "range", "id": "logo_max_width", "label": "Ancho máximo logo (px)", "min": 50, "max": 400, "step": 10, "default": 200 },
+    { "type": "range", "id": "prod_img_max_width", "label": "Ancho máximo producto (px)", "min": 100, "max": 600, "step": 10, "default": 300 }
   ],
   "blocks": [
     {
