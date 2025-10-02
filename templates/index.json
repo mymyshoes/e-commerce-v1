@@ -394,12 +394,63 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "promo_grid_9Kiie9": {
+      "type": "promo-grid",
+      "blocks": {
+        "left_card_ARNL87": {
+          "type": "left_card",
+          "settings": {
+            "logo": "shopify://shop_images/logo.png",
+            "logo_alt": "MYMY shoes",
+            "img1": "shopify://shop_images/IMG-20250926-WA0002.jpg",
+            "alt1": "Producto 1",
+            "img2": "shopify://shop_images/crocsmate_3.jpg",
+            "alt2": "Producto 2",
+            "link": ""
+          }
+        },
+        "promo_banner_kQYhKE": {
+          "type": "promo_banner",
+          "settings": {
+            "alt": "Promoción",
+            "link": ""
+          }
+        },
+        "small_left_UWByhj": {
+          "type": "small_left",
+          "settings": {
+            "alt": "Producto",
+            "link": ""
+          }
+        },
+        "small_right_NfKhre": {
+          "type": "small_right",
+          "settings": {
+            "alt": "Producto",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "left_card_ARNL87",
+        "promo_banner_kQYhKE",
+        "small_left_UWByhj",
+        "small_right_NfKhre"
+      ],
+      "name": "MYMY Grid",
+      "settings": {
+        "accent": "#f8ccd2",
+        "radius": 16,
+        "gap": 12
+      }
     }
   },
   "order": [
     "hero_banner_carrousel_zzKmQY",
     "collection_list_6YHxwF",
     "banner_responsive_4cbGVH",
-    "product_list_fa6P9H"
+    "product_list_fa6P9H",
+    "promo_grid_9Kiie9"
   ]
 }
