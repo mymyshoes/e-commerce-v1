@@ -32,19 +32,19 @@
 
                     {%- if left_block.settings.logo != blank -%}
                         <div class="brand">
-                            {{ left_block.settings.logo | image_url: width: 360 | image_tag: alt: left_block.settings.logo_alt, class: 'brand-img' }}
+                            {{ left_block.settings.logo | image_url: width: 180 | image_tag: alt: left_block.settings.logo_alt, class: 'brand-img' }}
                         </div>
                     {%- endif -%}
 
                     <div class="prod-stack">
                         {%- if left_block.settings.img1 != blank -%}
-                            {{ left_block.settings.img1 | image_url: width: 1200 | image_tag: alt: left_block.settings.alt1, class: 'prod-img' }}
+                            {{ left_block.settings.img1 | image_url: width: 500 | image_tag: alt: left_block.settings.alt1, class: 'prod-img' }}
                         {%- else -%}
                             <div class="ph ph--prod">Imagen 1</div>
                         {%- endif -%}
 
                         {%- if left_block.settings.img2 != blank -%}
-                            {{ left_block.settings.img2 | image_url: width: 1200 | image_tag: alt: left_block.settings.alt2, class: 'prod-img' }}
+                            {{ left_block.settings.img2 | image_url: width: 500 | image_tag: alt: left_block.settings.alt2, class: 'prod-img' }}
                         {%- else -%}
                             <div class="ph ph--prod">Imagen 2</div>
                         {%- endif -%}
