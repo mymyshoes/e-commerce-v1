@@ -49,20 +49,20 @@
     <h2 class="testimonios-titulo">{{ section.settings.titulo_seccion }}</h2>
     <div class="testimonios-grid">
       {% for block in section.blocks %}
-  <div class="testimonio-item">
-    {% if block.settings.foto_usuario != blank %}
-      <img
-        src="{{ block.settings.foto_usuario | image_url: width: 200, height: 200, crop: 'center', format: 'webp' }}"
-        alt="{{ block.settings.nombre_usuario }}"
-        width="200"
-        height="200"
-        class="testimonio-foto"
-      >
-    {% endif %}
-    <h3 class="testimonio-nombre">{{ block.settings.nombre_usuario }}</h3>
-    <p class="testimonio-comentario">“{{ block.settings.comentario_usuario }}”</p>
-  </div>
-{% endfor %}
+        <div class="testimonio-item">
+          {% if block.settings.foto_usuario != blank %}
+            <img
+              src="{{ block.settings.foto_usuario | image_url: width: 200, height: 200, crop: 'center', format: 'webp' }}"
+              alt="{{ block.settings.nombre_usuario }}"
+              width="200"
+              height="200"
+              class="testimonio-foto"
+            >
+          {% endif %}
+          <h3 class="testimonio-nombre">{{ block.settings.nombre_usuario }}</h3>
+          <p class="testimonio-comentario">“{{ block.settings.comentario_usuario }}”</p>
+        </div>
+      {% endfor %}
     </div>
   </div>
 </section>
