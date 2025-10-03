@@ -109,41 +109,36 @@
         display:grid;
         grid-template-columns: 1.6fr 1fr;
         gap: var(--gap);
+        align-items: start; /* evita que las celdas estiren los cards */
     }
-    #mymy-grid-{{ section.id }} .left-col{ align-self: stretch; }
+    #mymy-grid-{{ section.id }} .left-col{ align-self: start; }
     #mymy-grid-{{ section.id }} .right-col{
         display:grid; grid-template-rows: auto 1fr; gap: var(--gap);
+        align-items: start;
     }
     #mymy-grid-{{ section.id }} .mini-row{
         display:grid; grid-template-columns: 1fr 1fr; gap: var(--gap);
+        align-items: start;
     }
 
-    /* Cards y bordes */
+    /* Cards y bordes ajustados al contenido */
     #mymy-grid-{{ section.id }} .card {
         background: var(--card-bg);
         border-radius: var(--radius);
         border: 2px solid var(--accent);
         overflow: hidden;
-        display: inline-block;   /* deja que se ajuste al contenido */
-        width: fit-content;      /* tamaño al contenido */
-        margin: 0 auto;          /* centra el card en la celda */
-        text-align: center;      /* centra el contenido dentro */
-    }
-
-
-    #mymy-grid-{{ section.id }} .brand {
-        display: flex;
-        justify-content: center;  /* centra horizontal */
-        align-items: center;      /* centra vertical */
-        padding: 14px 10px 0;
-        text-align: center;       /* fallback por si acaso */
+        display: inline-block;  /* se ajusta al contenido */
+        width: fit-content;     /* colapsa al contenido */
+        margin: 0 auto;         /* centra el card en la celda */
+        text-align: center;
     }
 
     /* Logo con control desde schema */
     #mymy-grid-{{ section.id }} .brand-img {
         max-width: {{ logo_max_width }}px;
         height:auto;
-        width:auto;
+        display:block;
+        margin: 0 auto;
     }
 
     /* Productos con control desde schema */
