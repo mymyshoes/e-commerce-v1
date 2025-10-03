@@ -1,6 +1,6 @@
 {% comment %}
   MYMY – Grid exacta:
-  - Izquierda: logo arriba + productos abajo
+  - Izquierda: logo arriba + productos abajo (misma altura que derecha)
   - Derecha: banner arriba + dos minis abajo
 {% endcomment %}
 
@@ -103,27 +103,34 @@
 </section>
 
 <style>
+    /* Grid principal */
     #mymy-grid-{{ section.id }} .grid-wrap{
         display:grid;
         grid-template-columns: 1.6fr 1fr;
         gap: var(--gap);
-        align-items: stretch;
+        align-items: stretch; /* ambas columnas misma altura */
     }
 
-    /* Columna izquierda ahora en grid (logo arriba + productos abajo) */
+    /* Columna izquierda */
     #mymy-grid-{{ section.id }} .left-col {
-        display: grid;
-        grid-template-rows: auto 1fr;
-        justify-items: center;
-        align-items: start;
         height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
     }
 
+    /* Card izquierda */
+    #mymy-grid-{{ section.id }} .left-col.card {
+        height: 100%; /* misma altura que derecha */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* reparte logo y productos */
+    }
+
+    /* Logo */
     #mymy-grid-{{ section.id }} .brand {
-        align-self: start;
-        width: 100%;
         text-align: center;
-        padding-top: 10px;
+        padding: 10px 0;
     }
 
     #mymy-grid-{{ section.id }} .brand-img {
@@ -133,12 +140,12 @@
         margin: 0 auto;
     }
 
+    /* Productos */
     #mymy-grid-{{ section.id }} .prod-stack {
-        align-self: stretch;
+        flex: 1;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        width: 100%;
     }
 
     #mymy-grid-{{ section.id }} .prod-img {
