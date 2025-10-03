@@ -96,7 +96,7 @@
         --card-bg: #fff;
         --prod-size: {{ section.settings.prod_size | default: 220 }}px;
 
-        padding: 0 30px; /* separación lateral de 30px */
+        padding: 0 30px; /* margen interno en los lados */
         margin: 0 auto;
         max-width: 1400px;
     }
@@ -159,9 +159,11 @@
         align-items: center;
     }
     #mymy-grid-{{ section.id }} .prod-img {
-        width: var(--prod-size);
-        height: auto;
-        object-fit: contain;
+        width: var(--prod-size) !important;
+        max-width: 100% !important;
+        height: auto !important;
+        object-fit: contain !important;
+        display: block;
     }
 
     /* Banner */
@@ -208,7 +210,10 @@
     { "type": "range", "id": "prod_size", "label": "Tamaño productos izquierda (px)", "min": 100, "max": 400, "step": 10, "default": 220 }
   ],
   "blocks": [
-    { "type": "left_card", "name": "Card vertical", "limit": 1,
+    {
+      "type": "left_card",
+      "name": "Card vertical",
+      "limit": 1,
       "settings": [
         { "type": "image_picker", "id": "logo", "label": "Logo (arriba)" },
         { "type": "text", "id": "logo_alt", "label": "Alt logo", "default": "MYMY shoes" },
@@ -219,21 +224,30 @@
         { "type": "url", "id": "link", "label": "Link (opcional)" }
       ]
     },
-    { "type": "promo_banner", "name": "Promo banner", "limit": 1,
+    {
+      "type": "promo_banner",
+      "name": "Promo banner",
+      "limit": 1,
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Imagen banner" },
         { "type": "text", "id": "alt", "label": "Alt banner", "default": "Promoción" },
         { "type": "url", "id": "link", "label": "Link (opcional)" }
       ]
     },
-    { "type": "small_left", "name": "Mini izq", "limit": 1,
+    {
+      "type": "small_left",
+      "name": "Mini izq",
+      "limit": 1,
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Imagen mini 1" },
         { "type": "text", "id": "alt", "label": "Alt mini 1", "default": "Producto" },
         { "type": "url", "id": "link", "label": "Link (opcional)" }
       ]
     },
-    { "type": "small_right", "name": "Mini der", "limit": 1,
+    {
+      "type": "small_right",
+      "name": "Mini der",
+      "limit": 1,
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Imagen mini 2" },
         { "type": "text", "id": "alt", "label": "Alt mini 2", "default": "Producto" },
