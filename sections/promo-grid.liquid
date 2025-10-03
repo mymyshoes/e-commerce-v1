@@ -11,7 +11,7 @@
   {% assign small1_block = section.blocks | where: 'type', 'small_left' | first %}
   {% assign small2_block = section.blocks | where: 'type', 'small_right' | first %}
 
-  <div class="grid-wrap" style="background-color: {{ section.settings.left_card_bg | default: '#ff0000' }};">
+  <div class="grid-wrap" style="background-color: {{ section.settings.left_card_bg2 | default: '#ff0000' }};">
     {%- if left_block -%}
       <div class="left-col card" style="background-color: {{ section.settings.left_card_bg | default: '#ff0000' }};">
         {%- if left_block.settings.link != blank -%}<a href="{{ left_block.settings.link }}">{%- endif -%}
@@ -253,6 +253,11 @@
     {
       "type": "color",
       "id": "left_card_bg",
+      "label": "Color de fondo - tarjeta izquierda",
+      "default": "#ff0000"
+    }, {
+      "type": "color",
+      "id": "left_card_bg2",
       "label": "Color de fondo - tarjeta izquierda",
       "default": "#ff0000"
     }
