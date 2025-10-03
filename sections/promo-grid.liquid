@@ -1,7 +1,7 @@
 {% comment %}
   MYMY – Grid exacta:
-  - Izquierda: logo arriba + productos abajo (misma altura que derecha)
-  - Derecha: banner arriba + dos minis abajo
+  - Izquierda: logo arriba + productos abajo (misma altura que derecha, ancho ajustado)
+  - Derecha: banner arriba + dos minis abajo (centrados)
 {% endcomment %}
 
 {% assign gap = section.settings.gap | default: 12 %}
@@ -108,23 +108,17 @@
         display:grid;
         grid-template-columns: 1.6fr 1fr;
         gap: var(--gap);
-        align-items: stretch; /* ambas columnas misma altura */
+        align-items: stretch;
     }
 
-    /* Columna izquierda */
-    #mymy-grid-{{ section.id }} .left-col {
+    /* Card izquierda (ajustar ancho) */
+    #mymy-grid-{{ section.id }} .left-col.card {
+        max-width: 90%;  /* no tan ancho */
+        margin: 0 auto;  /* centrado dentro de la columna */
         height: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
-    }
-
-    /* Card izquierda */
-    #mymy-grid-{{ section.id }} .left-col.card {
-        height: 100%; /* 🔑 misma altura que derecha */
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between; /* reparte logo y productos */
+        justify-content: space-between;
     }
 
     /* Ajustes generales de card */
@@ -135,14 +129,14 @@
         overflow: hidden;
         text-align: center;
         height: 100%;
-        box-sizing: border-box; /* asegura tamaño correcto */
-        padding: 10px;          /* espacio interno uniforme */
+        box-sizing: border-box;
+        padding: 10px;
     }
 
     /* Logo */
     #mymy-grid-{{ section.id }} .brand {
         text-align: center;
-        padding: 6px 0 12px; /* menos espacio arriba */
+        padding: 6px 0 12px;
     }
 
     #mymy-grid-{{ section.id }} .brand-img {
@@ -157,7 +151,7 @@
         flex: 1;
         display: flex;
         flex-direction: column;
-        justify-content: space-around; /* reparte bien las imágenes */
+        justify-content: space-around;
         align-items: center;
         gap: 12px;
     }
@@ -171,24 +165,51 @@
 
     /* Columna derecha */
     #mymy-grid-{{ section.id }} .right-col{
-        display:grid; grid-template-rows: auto 1fr; gap: var(--gap);
+        display:grid;
+        grid-template-rows: auto 1fr;
+        gap: var(--gap);
         align-items: stretch;
     }
 
+    /* Banner centrado */
+    #mymy-grid-{{ section.id }} .promo-top.card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    #mymy-grid-{{ section.id }} .banner-img {
+        max-width: 95%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    /* Minis centrados */
     #mymy-grid-{{ section.id }} .mini-row{
-        display:grid; grid-template-columns: 1fr 1fr; gap: var(--gap);
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--gap);
         align-items: stretch;
     }
 
-    /* Banner promo */
-    #mymy-grid-{{ section.id }} .banner-img{ width:100%; height:auto; display:block; object-fit: cover; }
+    #mymy-grid-{{ section.id }} .mini.card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
 
-    /* Minis */
-    #mymy-grid-{{ section.id }} .mini-img{ width:100%; height:auto; display:block; object-fit: cover; }
+    #mymy-grid-{{ section.id }} .mini-img {
+        max-width: 90%;
+        height: auto;
+        margin: 0 auto;
+    }
 
     /* Placeholders */
     #mymy-grid-{{ section.id }} .ph{
-        display:flex; align-items:center; justify-content:center; color:#999; background:#fafafa;
+        display:flex; align-items:center; justify-content:center;
+        color:#999; background:#fafafa;
         width: 100%;
         height: 100%;
     }
