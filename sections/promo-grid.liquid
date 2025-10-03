@@ -121,16 +121,28 @@
 
     /* Card izquierda */
     #mymy-grid-{{ section.id }} .left-col.card {
-        height: 100%; /* misma altura que derecha */
+        height: 100%; /* 🔑 misma altura que derecha */
         display: flex;
         flex-direction: column;
         justify-content: space-between; /* reparte logo y productos */
     }
 
+    /* Ajustes generales de card */
+    #mymy-grid-{{ section.id }} .card {
+        background: var(--card-bg);
+        border-radius: var(--radius);
+        border: 2px solid var(--accent);
+        overflow: hidden;
+        text-align: center;
+        height: 100%;
+        box-sizing: border-box; /* asegura tamaño correcto */
+        padding: 10px;          /* espacio interno uniforme */
+    }
+
     /* Logo */
     #mymy-grid-{{ section.id }} .brand {
         text-align: center;
-        padding: 10px 0;
+        padding: 6px 0 12px; /* menos espacio arriba */
     }
 
     #mymy-grid-{{ section.id }} .brand-img {
@@ -145,13 +157,14 @@
         flex: 1;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-around; /* reparte bien las imágenes */
+        align-items: center;
+        gap: 12px;
     }
 
     #mymy-grid-{{ section.id }} .prod-img {
         max-width: {{ prod_img_max_width }}px;
         width: 100%;
-        margin: 8px auto;
         height: auto;
         object-fit: contain;
     }
@@ -167,16 +180,6 @@
         align-items: stretch;
     }
 
-    /* Cards */
-    #mymy-grid-{{ section.id }} .card {
-        background: var(--card-bg);
-        border-radius: var(--radius);
-        border: 2px solid var(--accent);
-        overflow: hidden;
-        text-align: center;
-        height: 100%;
-    }
-
     /* Banner promo */
     #mymy-grid-{{ section.id }} .banner-img{ width:100%; height:auto; display:block; object-fit: cover; }
 
@@ -186,8 +189,10 @@
     /* Placeholders */
     #mymy-grid-{{ section.id }} .ph{
         display:flex; align-items:center; justify-content:center; color:#999; background:#fafafa;
+        width: 100%;
+        height: 100%;
     }
-    #mymy-grid-{{ section.id }} .ph--prod{ min-height: 180px; }
+    #mymy-grid-{{ section.id }} .ph--prod{ min-height: 200px; }
     #mymy-grid-{{ section.id }} .ph--banner{ min-height: 220px; }
     #mymy-grid-{{ section.id }} .ph--mini{ min-height: 200px; }
 
