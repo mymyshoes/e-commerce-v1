@@ -13,7 +13,7 @@
 
   <div class="grid-wrap">
     {%- if left_block -%}
-      <div class="left-col card">
+      <div class="left-col card" style="background-color: {{ section.settings.left_card_bg | default: '#ff0000' }};">
         {%- if left_block.settings.link != blank -%}<a href="{{ left_block.settings.link }}">{%- endif -%}
 
         {%- if left_block.settings.logo != blank -%}
