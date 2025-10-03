@@ -1,0 +1,131 @@
+{% schema %}
+{
+  "name": "Testimonios",
+  "settings": [
+    {
+      "type": "text",
+      "id": "titulo_seccion",
+      "label": "Título de la sección",
+      "default": "Testimonios"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonio",
+      "name": "Testimonio",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "foto_usuario",
+          "label": "Foto del usuario"
+        },
+        {
+          "type": "text",
+          "id": "nombre_usuario",
+          "label": "Nombre del usuario",
+          "default": "Nombre Apellido"
+        },
+        {
+          "type": "textarea",
+          "id": "comentario_usuario",
+          "label": "Comentario",
+          "default": "Este es un comentario de ejemplo del cliente satisfecho."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Sección de Testimonios",
+      "category": "Secciones personalizadas"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="testimonios-section">
+  <div class="page-width">
+    <h2 class="testimonios-titulo">{{ section.settings.titulo_seccion }}</h2>
+    <div class="testimonios-grid">
+      {% for block in section.blocks %}
+        <div class="testimonio-item">
+          {% if block.settings.foto_usuario != blank %}
+            <img
+              src="{{ block.settings.foto_usuario | image_url: width: 200, height: 200, crop: 'center' }}"
+              alt="{{ block.settings.nombre_usuario }}"
+              width="200"
+              height="200"
+              class="testimonio-foto"
+            >
+          {% endif %}
+          <h3 class="testimonio-nombre">{{ block.settings.nombre_usuario }}</h3>
+          <p class="testimonio-comentario">“{{ block.settings.comentario_usuario }}”</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonios-section {
+    padding: 50px 0;
+    background-color: #f9f9f9;
+    text-align: center;
+  }
+
+  .testimonios-titulo {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    font-weight: bold;
+  }
+
+  .testimonios-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .testimonio-item {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .testimonio-foto {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+  }
+
+  .testimonio-nombre {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .testimonio-comentario {
+    font-size: 0.95rem;
+    color: #555;
+    font-style: italic;
+  }
+
+  /* Responsivo */
+  @media (max-width: 1000px) {
+    .testimonios-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .testimonios-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
