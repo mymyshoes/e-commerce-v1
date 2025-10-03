@@ -1,26 +1,11 @@
 {% comment %}
   MYMY – Grid exacta:
-  - Izquierda: card única (logo + productos en columna)
-  - Derecha: banner arriba + dos minis abajo
-  - 🔑 Ajuste: sin espacio en blanco entre columnas
+  - Izquierda: card vertical (logo + 2 imágenes de producto, en columna)
+  - Derecha arriba: banner promo
+  - Derecha abajo: 2 mini-cards (lado a lado)
 {% endcomment %}
 
-{% assign gap = section.settings.gap | default: 12 %}
-{% assign radius = section.settings.radius | default: 16 %}
-{% assign accent = section.settings.accent | default: '#f8ccd2' %}
-{% assign logo_max_width = section.settings.logo_max_width | default: 200 %}
-{% assign prod_img_max_width = section.settings.prod_img_max_width | default: 300 %}
-
-<section
-        id="mymy-grid-{{ section.id }}"
-        class="mymy-grid"
-        style="
-                --gap: {{ gap }}px;
-                --radius: {{ radius }}px;
-                --accent: {{ accent }};
-                --card-bg: #fff;
-                "
->
+<section id="mymy-grid-{{ section.id }}" class="mymy-grid">
     {% assign left_block  = section.blocks | where: 'type', 'left_card'   | first %}
     {% assign promo_block = section.blocks | where: 'type', 'promo_banner'| first %}
     {% assign small1_block= section.blocks | where: 'type', 'small_left'  | first %}
@@ -39,13 +24,13 @@
 
                     <div class="prod-stack">
                         {%- if left_block.settings.img1 != blank -%}
-                            {{ left_block.settings.img1 | image_url: width: 800 | image_tag: alt: left_block.settings.alt1, class: 'prod-img' }}
+                            {{ left_block.settings.img1 | image_url: width: 1200 | image_tag: alt: left_block.settings.alt1, class: 'prod-img' }}
                         {%- else -%}
                             <div class="ph ph--prod">Imagen 1</div>
                         {%- endif -%}
 
                         {%- if left_block.settings.img2 != blank -%}
-                            {{ left_block.settings.img2 | image_url: width: 800 | image_tag: alt: left_block.settings.alt2, class: 'prod-img' }}
+                            {{ left_block.settings.img2 | image_url: width: 1200 | image_tag: alt: left_block.settings.alt2, class: 'prod-img' }}
                         {%- else -%}
                             <div class="ph ph--prod">Imagen 2</div>
                         {%- endif -%}
@@ -104,12 +89,39 @@
 </section>
 
 <style>
-    /* Grid principal */
-    #mymy-grid-{{ section.id }} .grid-wrap{
+    #mymy-grid-{{ section.id }} {
+        --gap: {{ section.settings.gap | default: 12 }}px;
+        --radius: {{ section.settings.radius | default: 16 }}px;
+        --accent: {{ section.settings.accent | default: '#f8ccd2' }};
+        --card-bg: #fff;
+    }
+
+    #mymy-grid-{{ section.id }} .grid-wrap {
         display: grid;
-        grid-template-columns: 1fr 1fr; /* 🔑 columnas balanceadas */
-        gap: 0; /* 🔑 sin espacio en blanco entre columnas */
-        align-items: stretch;
+        grid-template-columns: 1fr 1.2fr; /* izquierda compacta, derecha más pequeña */
+        gap: var(--gap);
+        align-items: start;
+    }
+
+    /* Columna izquierda */
+    #mymy-grid-{{ section.id }} .left-col {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gap);
+        align-self: start;
+    }
+
+    /* Columna derecha */
+    #mymy-grid-{{ section.id }} .right-col {
+        display: grid;
+        grid-template-rows: auto 1fr;
+        gap: var(--gap);
+    }
+
+    #mymy-grid-{{ section.id }} .mini-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--gap);
     }
 
     /* Cards */
@@ -118,77 +130,66 @@
         border-radius: var(--radius);
         border: 2px solid var(--accent);
         overflow: hidden;
-        text-align: center;
-        box-sizing: border-box;
-        margin: var(--gap); /* espacio interno */
-        padding: 10px;
-        height: 100%;
-    }
-
-    /* Columna izquierda */
-    #mymy-grid-{{ section.id }} .left-col.card {
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
+        justify-content: center;
     }
 
     /* Logo */
     #mymy-grid-{{ section.id }} .brand {
-        text-align: center;
-        padding: 10px 0;
-    }
-
-    #mymy-grid-{{ section.id }} .brand-img {
-        max-width: {{ logo_max_width }}px;
-        height: auto;
-        display: block;
-        margin: 0 auto;
-    }
-
-    /* Productos en columna */
-    #mymy-grid-{{ section.id }} .prod-stack {
-        flex: 1;
         display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        gap: 12px;
+        justify-content: center;
         padding: 10px;
     }
+    #mymy-grid-{{ section.id }} .brand-img {
+        max-width: 80px;
+        height: auto;
+    }
 
+    /* Productos izquierda */
+    #mymy-grid-{{ section.id }} .prod-stack {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gap);
+        align-items: center;
+    }
     #mymy-grid-{{ section.id }} .prod-img {
-        width: 100%;
-        max-width: {{ prod_img_max_width }}px;
-        margin: 0 auto;
+        width: 200px;
+        height: auto;
         object-fit: contain;
     }
 
-    /* Columna derecha */
-    #mymy-grid-{{ section.id }} .right-col {
-        display: grid;
-        grid-template-rows: auto 1fr;
-        height: 100%;
+    /* Banner */
+    #mymy-grid-{{ section.id }} .banner-img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
     }
 
     /* Minis */
-    #mymy-grid-{{ section.id }} .mini-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+    #mymy-grid-{{ section.id }} .mini-img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
     }
 
     /* Placeholders */
     #mymy-grid-{{ section.id }} .ph {
-        display:flex; align-items:center; justify-content:center;
-        color:#999; background:#fafafa;
-        width: 100%;
-        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #999;
+        background: #fafafa;
     }
-    #mymy-grid-{{ section.id }} .ph--prod{ min-height: 200px; }
-    #mymy-grid-{{ section.id }} .ph--banner{ min-height: 220px; }
-    #mymy-grid-{{ section.id }} .ph--mini{ min-height: 200px; }
+    #mymy-grid-{{ section.id }} .ph--prod { min-height: 180px; }
+    #mymy-grid-{{ section.id }} .ph--banner { min-height: 220px; }
+    #mymy-grid-{{ section.id }} .ph--mini { min-height: 200px; }
 
     /* Responsive */
-    @media (max-width: 980px){
-        #mymy-grid-{{ section.id }} .grid-wrap{ grid-template-columns: 1fr; }
+    @media (max-width: 980px) {
+        #mymy-grid-{{ section.id }} .grid-wrap {
+            grid-template-columns: 1fr;
+        }
     }
 </style>
 
@@ -198,37 +199,47 @@
   "settings": [
     { "type": "color", "id": "accent", "label": "Color borde", "default": "#f8ccd2" },
     { "type": "range", "id": "radius", "label": "Radio esquinas (px)", "min": 0, "max": 30, "step": 1, "default": 16 },
-    { "type": "range", "id": "gap", "label": "Espacio entre cards (px)", "min": 8, "max": 32, "step": 1, "default": 12 },
-    { "type": "range", "id": "logo_max_width", "label": "Ancho máximo logo (px)", "min": 50, "max": 400, "step": 10, "default": 200 },
-    { "type": "range", "id": "prod_img_max_width", "label": "Ancho máximo producto (px)", "min": 100, "max": 600, "step": 10, "default": 300 }
+    { "type": "range", "id": "gap", "label": "Espacio entre cards (px)", "min": 8, "max": 32, "step": 1, "default": 12 }
   ],
   "blocks": [
-    { "type": "left_card", "name": "Card izquierda", "limit": 1,
+    {
+      "type": "left_card",
+      "name": "Card vertical",
+      "limit": 1,
       "settings": [
         { "type": "image_picker", "id": "logo", "label": "Logo (arriba)" },
         { "type": "text", "id": "logo_alt", "label": "Alt logo", "default": "MYMY shoes" },
-        { "type": "image_picker", "id": "img1", "label": "Producto 1" },
+        { "type": "image_picker", "id": "img1", "label": "Producto 1 (izq)" },
         { "type": "text", "id": "alt1", "label": "Alt producto 1", "default": "Producto 1" },
-        { "type": "image_picker", "id": "img2", "label": "Producto 2" },
+        { "type": "image_picker", "id": "img2", "label": "Producto 2 (abajo)" },
         { "type": "text", "id": "alt2", "label": "Alt producto 2", "default": "Producto 2" },
         { "type": "url", "id": "link", "label": "Link (opcional)" }
       ]
     },
-    { "type": "promo_banner", "name": "Promo banner", "limit": 1,
+    {
+      "type": "promo_banner",
+      "name": "Promo banner",
+      "limit": 1,
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Imagen banner" },
         { "type": "text", "id": "alt", "label": "Alt banner", "default": "Promoción" },
         { "type": "url", "id": "link", "label": "Link (opcional)" }
       ]
     },
-    { "type": "small_left", "name": "Mini izq", "limit": 1,
+    {
+      "type": "small_left",
+      "name": "Mini izq",
+      "limit": 1,
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Imagen mini 1" },
         { "type": "text", "id": "alt", "label": "Alt mini 1", "default": "Producto" },
         { "type": "url", "id": "link", "label": "Link (opcional)" }
       ]
     },
-    { "type": "small_right", "name": "Mini der", "limit": 1,
+    {
+      "type": "small_right",
+      "name": "Mini der",
+      "limit": 1,
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Imagen mini 2" },
         { "type": "text", "id": "alt", "label": "Alt mini 2", "default": "Producto" },
