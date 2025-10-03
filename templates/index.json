@@ -413,6 +413,7 @@
         "promo_banner_kQYhKE": {
           "type": "promo_banner",
           "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_kpipo1kpipo1kpip.png",
             "alt": "Promoción",
             "link": ""
           }
@@ -420,6 +421,7 @@
         "small_left_UWByhj": {
           "type": "small_left",
           "settings": {
+            "image": "shopify://shop_images/Kike_0002_DSC_0207.jpg",
             "alt": "Producto",
             "link": ""
           }
@@ -427,6 +429,7 @@
         "small_right_NfKhre": {
           "type": "small_right",
           "settings": {
+            "image": "shopify://shop_images/Agatha_Negro_Charol_0003_DSC_0207.jpg",
             "alt": "Producto",
             "link": ""
           }
@@ -440,9 +443,11 @@
       ],
       "name": "MYMY Grid",
       "settings": {
-        "accent": "#f8ccd2",
+        "accent": "#baa7aa",
         "radius": 16,
-        "gap": 12
+        "gap": 11,
+        "logo_max_width": 80,
+        "prod_img_max_width": 300
       }
     }
   },
