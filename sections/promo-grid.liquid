@@ -13,10 +13,13 @@
 
   <div class="grid-wrap">
     {%- if left_block -%}
-      <div class="left-col card" style="
-    width: {{ section.settings.left_card_width }};
-    height: {{ section.settings.left_card_height }};
-  ">
+      <div
+        class="left-col card"
+        style="
+          width: {{ section.settings.left_card_width }};
+          height: {{ section.settings.left_card_height }};
+        "
+      >
         {%- if left_block.settings.link != blank -%}<a href="{{ left_block.settings.link }}">{%- endif -%}
 
         {%- if left_block.settings.logo != blank -%}
@@ -115,7 +118,7 @@
   </div>
 </section>
 
-<style>
+{% comment %} <style>
   #mymy-grid-{{ section.id }} {
       --gap: {{ section.settings.gap | default: 12 }}px;
       --radius: {{ section.settings.radius | default: 16 }}px;
@@ -227,7 +230,148 @@
           grid-template-columns: 1fr;
       }
   }
+</style> {% endcomment %}
+
+<style>
+  #mymy-grid-{{ section.id }} {
+    --gap: {{ section.settings.gap | default: 12 }}px;
+    --radius: {{ section.settings.radius | default: 16 }}px;
+    --accent: {{ section.settings.accent | default: '#f8ccd2' }};
+    --card-bg: #fff;
+    --prod-size: {{ section.settings.prod_size | default: 220 }}px;
+
+    padding: 0 30px;
+    margin: 0 auto;
+    max-width: 1400px;
+  }
+
+  #mymy-grid-{{ section.id }} .grid-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: var(--gap);
+    align-items: start;
+  }
+
+  /* Columna izquierda */
+  #mymy-grid-{{ section.id }} .left-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+    align-self: start;
+    width: {{ section.settings.left_card_width }};
+    height: {{ section.settings.left_card_height }};
+    max-width: 100%;
+  }
+
+  /* Columna derecha */
+  #mymy-grid-{{ section.id }} .right-col {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: var(--gap);
+  }
+
+  #mymy-grid-{{ section.id }} .mini-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap);
+  }
+
+  /* Cards */
+  #mymy-grid-{{ section.id }} .card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    border: 2px solid var(--accent);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* Logo */
+  #mymy-grid-{{ section.id }} .brand {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+  }
+  #mymy-grid-{{ section.id }} .brand-img {
+    max-width: 80px;
+    height: auto;
+  }
+
+  /* Productos izquierda */
+  #mymy-grid-{{ section.id }} .prod-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+    align-items: center;
+  }
+  #mymy-grid-{{ section.id }} .prod-img {
+    width: var(--prod-size) !important;
+    max-width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+    display: block;
+  }
+
+  /* Banner */
+  #mymy-grid-{{ section.id }} .banner-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Minis */
+  #mymy-grid-{{ section.id }} .mini-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Placeholders */
+  #mymy-grid-{{ section.id }} .ph {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    background: #fafafa;
+  }
+  #mymy-grid-{{ section.id }} .ph--prod { min-height: 180px; }
+  #mymy-grid-{{ section.id }} .ph--banner { min-height: 220px; }
+  #mymy-grid-{{ section.id }} .ph--mini { min-height: 200px; }
+
+  /* 🔸 Responsive Tablets */
+  @media (max-width: 980px) {
+    #mymy-grid-{{ section.id }} .grid-wrap {
+      grid-template-columns: 1fr;
+    }
+    #mymy-grid-{{ section.id }} .left-col {
+      width: 100% !important;
+      height: auto !important;
+    }
+  }
+
+  /* 🔸 Responsive Móviles pequeños */
+  @media (max-width: 600px) {
+    #mymy-grid-{{ section.id }} {
+      padding: 0 15px;
+    }
+
+    #mymy-grid-{{ section.id }} .mini-row {
+      grid-template-columns: 1fr;
+    }
+
+    #mymy-grid-{{ section.id }} .prod-img {
+      width: 180px !important;
+    }
+
+    #mymy-grid-{{ section.id }} .brand-img {
+      max-width: 60px;
+    }
+  }
 </style>
+
 
 {% schema %}
 {
@@ -252,18 +396,19 @@
       "max": 400,
       "step": 10,
       "default": 220
-    },{
-  "type": "text",
-  "id": "left_card_width",
-  "label": "Ancho del contenedor (por ejemplo: 300px o 100%)",
-  "default": "300px"
-},
-{
-  "type": "text",
-  "id": "left_card_height",
-  "label": "Alto del contenedor (por ejemplo: 400px o auto)",
-  "default": "400px"
-}
+    },
+    {
+      "type": "text",
+      "id": "left_card_width",
+      "label": "Ancho del contenedor (por ejemplo: 300px o 100%)",
+      "default": "300px"
+    },
+    {
+      "type": "text",
+      "id": "left_card_height",
+      "label": "Alto del contenedor (por ejemplo: 400px o auto)",
+      "default": "400px"
+    }
   ],
   "blocks": [
     {
