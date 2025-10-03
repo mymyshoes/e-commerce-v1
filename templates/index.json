@@ -446,7 +446,9 @@
         "accent": "#baa7aa",
         "radius": 16,
         "gap": 11,
-        "prod_size": 310
+        "prod_size": 310,
+        "left_card_width": "600 px",
+        "left_card_height": "600 px"
       }
     },
     "section_UHh63d": {
