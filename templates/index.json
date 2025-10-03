@@ -395,6 +395,62 @@
         "padding-block-end": 48
       }
     },
+    "promo_grid_9Kiie9": {
+      "type": "promo-grid",
+      "blocks": {
+        "left_card_ARNL87": {
+          "type": "left_card",
+          "settings": {
+            "logo": "shopify://shop_images/logo.png",
+            "logo_alt": "MYMY shoes",
+            "img1": "shopify://shop_images/Prueba-Banner.jpg",
+            "alt1": "Producto 1",
+            "img2": "shopify://shop_images/Prueba-Banner_8bfc3f52-9ec6-4289-8648-86e4c019d345.jpg",
+            "alt2": "Producto 2",
+            "link": ""
+          }
+        },
+        "promo_banner_kQYhKE": {
+          "type": "promo_banner",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_kpipo1kpipo1kpip.png",
+            "alt": "Promoción",
+            "link": ""
+          }
+        },
+        "small_left_UWByhj": {
+          "type": "small_left",
+          "settings": {
+            "image": "shopify://shop_images/Kike_0002_DSC_0207.jpg",
+            "alt": "Producto",
+            "link": ""
+          }
+        },
+        "small_right_NfKhre": {
+          "type": "small_right",
+          "settings": {
+            "image": "shopify://shop_images/Agatha_Negro_Charol_0003_DSC_0207.jpg",
+            "alt": "Producto",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "left_card_ARNL87",
+        "promo_banner_kQYhKE",
+        "small_left_UWByhj",
+        "small_right_NfKhre"
+      ],
+      "name": "MYMY Grid",
+      "settings": {
+        "accent": "#baa7aa",
+        "radius": 16,
+        "gap": 11,
+        "prod_size": 320,
+        "left_card_width": "600px",
+        "left_card_height": "730px"
+      }
+    },
     "product_list_xqPtAT": {
       "type": "product-list",
       "blocks": {
@@ -589,62 +645,6 @@
         "padding-block-end": 48
       }
     },
-    "promo_grid_9Kiie9": {
-      "type": "promo-grid",
-      "blocks": {
-        "left_card_ARNL87": {
-          "type": "left_card",
-          "settings": {
-            "logo": "shopify://shop_images/logo.png",
-            "logo_alt": "MYMY shoes",
-            "img1": "shopify://shop_images/Prueba-Banner.jpg",
-            "alt1": "Producto 1",
-            "img2": "shopify://shop_images/Prueba-Banner_8bfc3f52-9ec6-4289-8648-86e4c019d345.jpg",
-            "alt2": "Producto 2",
-            "link": ""
-          }
-        },
-        "promo_banner_kQYhKE": {
-          "type": "promo_banner",
-          "settings": {
-            "image": "shopify://shop_images/Gemini_Generated_Image_kpipo1kpipo1kpip.png",
-            "alt": "Promoción",
-            "link": ""
-          }
-        },
-        "small_left_UWByhj": {
-          "type": "small_left",
-          "settings": {
-            "image": "shopify://shop_images/Kike_0002_DSC_0207.jpg",
-            "alt": "Producto",
-            "link": ""
-          }
-        },
-        "small_right_NfKhre": {
-          "type": "small_right",
-          "settings": {
-            "image": "shopify://shop_images/Agatha_Negro_Charol_0003_DSC_0207.jpg",
-            "alt": "Producto",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "left_card_ARNL87",
-        "promo_banner_kQYhKE",
-        "small_left_UWByhj",
-        "small_right_NfKhre"
-      ],
-      "name": "MYMY Grid",
-      "settings": {
-        "accent": "#baa7aa",
-        "radius": 16,
-        "gap": 11,
-        "prod_size": 320,
-        "left_card_width": "600px",
-        "left_card_height": "730px"
-      }
-    },
     "section_UHh63d": {
       "type": "section",
       "blocks": {
@@ -812,9 +812,9 @@
     "collection_list_6YHxwF",
     "banner_responsive_4cbGVH",
     "product_list_fa6P9H",
-    "product_list_xqPtAT",
     "promo_grid_9Kiie9",
     "section_UHh63d",
+    "product_list_xqPtAT",
     "testimonios_TpwRgD"
   ]
 }
