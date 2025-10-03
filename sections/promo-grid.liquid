@@ -1,11 +1,9 @@
 {% comment %}
   MYMY – Grid exacta:
-  - Izquierda: card vertical (logo + 2 imágenes de producto)
-  - Derecha arriba: banner promo
-  - Derecha abajo: 2 mini-cards (lado a lado)
+  - Izquierda: logo arriba + productos abajo
+  - Derecha: banner arriba + dos minis abajo
 {% endcomment %}
 
-{% comment %} Ajustes seguros con defaults {% endcomment %}
 {% assign gap = section.settings.gap | default: 12 %}
 {% assign radius = section.settings.radius | default: 16 %}
 {% assign accent = section.settings.accent | default: '#f8ccd2' %}
@@ -109,18 +107,49 @@
         display:grid;
         grid-template-columns: 1.6fr 1fr;
         gap: var(--gap);
-        align-items: stretch; /* estira ambas columnas */
+        align-items: stretch;
     }
 
+    /* Columna izquierda ahora en grid (logo arriba + productos abajo) */
     #mymy-grid-{{ section.id }} .left-col {
-        justify-self: center;  /* centra horizontalmente */
-        align-self: stretch;   /* estira en altura */
-        height: 100%;          /* iguala altura con la derecha */
+        display: grid;
+        grid-template-rows: auto 1fr;
+        justify-items: center;
+        align-items: start;
+        height: 100%;
+    }
+
+    #mymy-grid-{{ section.id }} .brand {
+        align-self: start;
+        width: 100%;
+        text-align: center;
+        padding-top: 10px;
+    }
+
+    #mymy-grid-{{ section.id }} .brand-img {
+        max-width: {{ logo_max_width }}px;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+
+    #mymy-grid-{{ section.id }} .prod-stack {
+        align-self: stretch;
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
+        justify-content: center;
+        width: 100%;
     }
 
+    #mymy-grid-{{ section.id }} .prod-img {
+        max-width: {{ prod_img_max_width }}px;
+        width: 100%;
+        margin: 8px auto;
+        height: auto;
+        object-fit: contain;
+    }
+
+    /* Columna derecha */
     #mymy-grid-{{ section.id }} .right-col{
         display:grid; grid-template-rows: auto 1fr; gap: var(--gap);
         align-items: stretch;
@@ -138,27 +167,10 @@
         border: 2px solid var(--accent);
         overflow: hidden;
         text-align: center;
-        height: 100%; /* se ajustan al alto disponible */
+        height: 100%;
     }
 
-    /* Logo */
-    #mymy-grid-{{ section.id }} .brand-img {
-        max-width: {{ logo_max_width }}px;
-        height:auto;
-        display:block;
-        margin: 0 auto;
-    }
-
-    /* Productos */
-    #mymy-grid-{{ section.id }} .prod-img {
-        max-width: {{ prod_img_max_width }}px;
-        width: 100%;
-        margin: 8px auto;
-        height:auto;
-        object-fit: contain;
-    }
-
-    /* Banner */
+    /* Banner promo */
     #mymy-grid-{{ section.id }} .banner-img{ width:100%; height:auto; display:block; object-fit: cover; }
 
     /* Minis */
