@@ -94,6 +94,7 @@
         --radius: {{ section.settings.radius | default: 16 }}px;
         --accent: {{ section.settings.accent | default: '#f8ccd2' }};
         --card-bg: #fff;
+        --card-bg-pru: #f10000ff;
         --prod-size: {{ section.settings.prod_size | default: 220 }}px;
 
         padding: 0 30px; /* separación lateral de 30px */
@@ -149,6 +150,10 @@
     #mymy-grid-{{ section.id }} .brand-img {
         max-width: 80px;
         height: auto;
+    }
+    {% comment %} Esta es la que se ajusta {% endcomment %}
+       #mymy-grid-{{ section.id }} .card {
+        background: var(--card-bg-pru);
     }
 
     /* Productos izquierda */
