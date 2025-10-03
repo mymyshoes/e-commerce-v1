@@ -11,9 +11,13 @@
   {% assign small1_block = section.blocks | where: 'type', 'small_left' | first %}
   {% assign small2_block = section.blocks | where: 'type', 'small_right' | first %}
 
-  <div class="grid-wrap" style="background-color: {{ section.settings.left_card_bg2 | default: '#ff0000' }};">
+  <div class="grid-wrap">
     {%- if left_block -%}
-      <div class="left-col card" style="background-color: {{ section.settings.left_card_bg | default: '#ff0000' }};">
+      <div class="left-col card" style="
+    background-color: {{ section.settings.left_card_bg | default: '#ff0000' }};
+    width: {{ section.settings.left_card_width }};
+    height: {{ section.settings.left_card_height }};
+  ">
         {%- if left_block.settings.link != blank -%}<a href="{{ left_block.settings.link }}">{%- endif -%}
 
         {%- if left_block.settings.logo != blank -%}
