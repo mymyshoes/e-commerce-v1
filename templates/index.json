@@ -448,6 +448,53 @@
         "gap": 11,
         "prod_size": 240
       }
+    },
+    "testimonios_TpwRgD": {
+      "type": "testimonios",
+      "blocks": {
+        "testimonio_RLV3hP": {
+          "type": "testimonio",
+          "settings": {
+            "foto_usuario": "shopify://shop_images/ChatGPT_Image_23_abr_2025_22_09_50.png",
+            "nombre_usuario": "Nombre Apellido",
+            "comentario_usuario": "Este es un comentario de ejemplo del cliente satisfecho."
+          }
+        },
+        "testimonio_dLTpHm": {
+          "type": "testimonio",
+          "settings": {
+            "foto_usuario": "shopify://shop_images/ChatGPT_Image_23_abr_2025_22_03_59.png",
+            "nombre_usuario": "Nombre Apellido",
+            "comentario_usuario": "Este es un comentario de ejemplo del cliente satisfecho."
+          }
+        },
+        "testimonio_RtUAiP": {
+          "type": "testimonio",
+          "settings": {
+            "foto_usuario": "shopify://shop_images/ChatGPT_Image_23_abr_2025_22_03_25.png",
+            "nombre_usuario": "Nombre Apellido",
+            "comentario_usuario": "Este es un comentario de ejemplo del cliente satisfecho."
+          }
+        },
+        "testimonio_GTtbNG": {
+          "type": "testimonio",
+          "settings": {
+            "foto_usuario": "shopify://shop_images/ChatGPT_Image_23_abr_2025_22_03_23.png",
+            "nombre_usuario": "Nombre Apellido",
+            "comentario_usuario": "Este es un comentario de ejemplo del cliente satisfecho."
+          }
+        }
+      },
+      "block_order": [
+        "testimonio_RLV3hP",
+        "testimonio_dLTpHm",
+        "testimonio_RtUAiP",
+        "testimonio_GTtbNG"
+      ],
+      "name": "Sección de Testimonios",
+      "settings": {
+        "titulo_seccion": "Testimonios"
+      }
     }
   },
   "order": [
@@ -455,6 +502,7 @@
     "collection_list_6YHxwF",
     "banner_responsive_4cbGVH",
     "product_list_fa6P9H",
-    "promo_grid_9Kiie9"
+    "promo_grid_9Kiie9",
+    "testimonios_TpwRgD"
   ]
 }
