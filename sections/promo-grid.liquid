@@ -6,203 +6,224 @@
 {% endcomment %}
 
 <section id="mymy-grid-{{ section.id }}" class="mymy-grid">
-    {% assign left_block  = section.blocks | where: 'type', 'left_card'   | first %}
-    {% assign promo_block = section.blocks | where: 'type', 'promo_banner'| first %}
-    {% assign small1_block= section.blocks | where: 'type', 'small_left'  | first %}
-    {% assign small2_block= section.blocks | where: 'type', 'small_right' | first %}
+  {% assign left_block = section.blocks | where: 'type', 'left_card' | first %}
+  {% assign promo_block = section.blocks | where: 'type', 'promo_banner' | first %}
+  {% assign small1_block = section.blocks | where: 'type', 'small_left' | first %}
+  {% assign small2_block = section.blocks | where: 'type', 'small_right' | first %}
 
-    <div class="grid-wrap">
-        {%- if left_block -%}
-            <div class="left-col card">
-            {%- if left_block.settings.link != blank -%}<a href="{{ left_block.settings.link }}">{%- endif -%}
+  <div class="grid-wrap">
+    {%- if left_block -%}
+      <div class="left-col card">
+        {%- if left_block.settings.link != blank -%}<a href="{{ left_block.settings.link }}">{%- endif -%}
 
-                    {%- if left_block.settings.logo != blank -%}
-                        <div class="brand">
-                            {{ left_block.settings.logo | image_url: width: 360 | image_tag: alt: left_block.settings.logo_alt, class: 'brand-img' }}
-                        </div>
-                    {%- endif -%}
-
-                    <div class="prod-stack">
-                        {%- if left_block.settings.img1 != blank -%}
-                            {{ left_block.settings.img1 | image_url: width: 1200 | image_tag: alt: left_block.settings.alt1, class: 'prod-img' }}
-                        {%- else -%}
-                            <div class="ph ph--prod">Imagen 1</div>
-                        {%- endif -%}
-
-                        {%- if left_block.settings.img2 != blank -%}
-                            {{ left_block.settings.img2 | image_url: width: 1200 | image_tag: alt: left_block.settings.alt2, class: 'prod-img' }}
-                        {%- else -%}
-                            <div class="ph ph--prod">Imagen 2</div>
-                        {%- endif -%}
-                    </div>
-
-                    {%- if left_block.settings.link != blank -%}</a>{%- endif -%}
-            </div>
+        {%- if left_block.settings.logo != blank -%}
+          <div class="brand">
+            {{
+              left_block.settings.logo
+              | image_url: width: 360
+              | image_tag: alt: left_block.settings.logo_alt, class: 'brand-img'
+            }}
+          </div>
         {%- endif -%}
 
-        <div class="right-col">
-            <div class="promo-top card">
-                {%- if promo_block -%}
-                    {%- if promo_block.settings.link != blank -%}<a href="{{ promo_block.settings.link }}">{%- endif -%}
-                    {%- if promo_block.settings.image != blank -%}
-                        {{ promo_block.settings.image | image_url: width: 1400 | image_tag: alt: promo_block.settings.alt, class: 'banner-img' }}
-                    {%- else -%}
-                        <div class="ph ph--banner">Banner</div>
-                    {%- endif -%}
-                    {%- if promo_block.settings.link != blank -%}</a>{%- endif -%}
-                {%- else -%}
-                    <div class="ph ph--banner">Banner</div>
-                {%- endif -%}
-            </div>
+        <div class="prod-stack">
+          {%- if left_block.settings.img1 != blank -%}
+            {{
+              left_block.settings.img1
+              | image_url: width: 1200
+              | image_tag: alt: left_block.settings.alt1, class: 'prod-img'
+            }}
+          {%- else -%}
+            <div class="ph ph--prod">Imagen 1</div>
+          {%- endif -%}
 
-            <div class="mini-row">
-                <div class="mini card">
-                    {%- if small1_block -%}
-                        {%- if small1_block.settings.link != blank -%}<a href="{{ small1_block.settings.link }}">{%- endif -%}
-                        {%- if small1_block.settings.image != blank -%}
-                            {{ small1_block.settings.image | image_url: width: 900 | image_tag: alt: small1_block.settings.alt, class: 'mini-img' }}
-                        {%- else -%}
-                            <div class="ph ph--mini">Mini 1</div>
-                        {%- endif -%}
-                        {%- if small1_block.settings.link != blank -%}</a>{%- endif -%}
-                    {%- else -%}
-                        <div class="ph ph--mini">Mini 1</div>
-                    {%- endif -%}
-                </div>
-
-                <div class="mini card">
-                    {%- if small2_block -%}
-                        {%- if small2_block.settings.link != blank -%}<a href="{{ small2_block.settings.link }}">{%- endif -%}
-                        {%- if small2_block.settings.image != blank -%}
-                            {{ small2_block.settings.image | image_url: width: 900 | image_tag: alt: small2_block.settings.alt, class: 'mini-img' }}
-                        {%- else -%}
-                            <div class="ph ph--mini">Mini 2</div>
-                        {%- endif -%}
-                        {%- if small2_block.settings.link != blank -%}</a>{%- endif -%}
-                    {%- else -%}
-                        <div class="ph ph--mini">Mini 2</div>
-                    {%- endif -%}
-                </div>
-            </div>
+          {%- if left_block.settings.img2 != blank -%}
+            {{
+              left_block.settings.img2
+              | image_url: width: 1200
+              | image_tag: alt: left_block.settings.alt2, class: 'prod-img'
+            }}
+          {%- else -%}
+            <div class="ph ph--prod">Imagen 2</div>
+          {%- endif -%}
         </div>
+
+        {%- if left_block.settings.link != blank -%}</a>{%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="right-col">
+      <div class="promo-top card">
+        {%- if promo_block -%}
+          {%- if promo_block.settings.link != blank -%}<a href="{{ promo_block.settings.link }}">{%- endif -%}
+          {%- if promo_block.settings.image != blank -%}
+            {{
+              promo_block.settings.image
+              | image_url: width: 1400
+              | image_tag: alt: promo_block.settings.alt, class: 'banner-img'
+            }}
+          {%- else -%}
+            <div class="ph ph--banner">Banner</div>
+          {%- endif -%}
+          {%- if promo_block.settings.link != blank -%}</a>{%- endif -%}
+        {%- else -%}
+          <div class="ph ph--banner">Banner</div>
+        {%- endif -%}
+      </div>
+
+      <div class="mini-row">
+        <div class="mini card">
+          {%- if small1_block -%}
+            {%- if small1_block.settings.link != blank -%}<a href="{{ small1_block.settings.link }}">{%- endif -%}
+            {%- if small1_block.settings.image != blank -%}
+              {{
+                small1_block.settings.image
+                | image_url: width: 900
+                | image_tag: alt: small1_block.settings.alt, class: 'mini-img'
+              }}
+            {%- else -%}
+              <div class="ph ph--mini">Mini 1</div>
+            {%- endif -%}
+            {%- if small1_block.settings.link != blank -%}</a>{%- endif -%}
+          {%- else -%}
+            <div class="ph ph--mini">Mini 1</div>
+          {%- endif -%}
+        </div>
+
+        <div class="mini card">
+          {%- if small2_block -%}
+            {%- if small2_block.settings.link != blank -%}<a href="{{ small2_block.settings.link }}">{%- endif -%}
+            {%- if small2_block.settings.image != blank -%}
+              {{
+                small2_block.settings.image
+                | image_url: width: 900
+                | image_tag: alt: small2_block.settings.alt, class: 'mini-img'
+              }}
+            {%- else -%}
+              <div class="ph ph--mini">Mini 2</div>
+            {%- endif -%}
+            {%- if small2_block.settings.link != blank -%}</a>{%- endif -%}
+          {%- else -%}
+            <div class="ph ph--mini">Mini 2</div>
+          {%- endif -%}
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <style>
-    #mymy-grid-{{ section.id }} {
-        --gap: {{ section.settings.gap | default: 12 }}px;
-        --radius: {{ section.settings.radius | default: 16 }}px;
-        --accent: {{ section.settings.accent | default: '#f8ccd2' }};
-        --card-bg: #fff;
-        --prod-size: {{ section.settings.prod_size | default: 220 }}px;
+  #mymy-grid-{{ section.id }} {
+      --gap: {{ section.settings.gap | default: 12 }}px;
+      --radius: {{ section.settings.radius | default: 16 }}px;
+      --accent: {{ section.settings.accent | default: '#f8ccd2' }};
+      --card-bg: #fff;
+      --prod-size: {{ section.settings.prod_size | default: 220 }}px;
 
-        padding: 0 30px; /* margen interno en los lados */
-        margin: 0 auto;
-        max-width: 1400px;
-    }
+      padding: 0 30px; /* margen interno en los lados */
+      margin: 0 auto;
+      max-width: 1400px;
+  }
 
-    #mymy-grid-{{ section.id }} .grid-wrap {
-        display: grid;
-        grid-template-columns: 1fr 1.2fr;
-        gap: var(--gap);
-        align-items: start;
-    }
+  #mymy-grid-{{ section.id }} .grid-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: var(--gap);
+      align-items: start;
+  }
 
-    /* Columna izquierda */
-    #mymy-grid-{{ section.id }} .left-col {
-        display: flex;
-        flex-direction: column;
-        gap: var(--gap);
-        align-self: start;
-    }
+  /* Columna izquierda */
+  #mymy-grid-{{ section.id }} .left-col {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap);
+      align-self: start;
+  }
 
-    /* Columna derecha */
-    #mymy-grid-{{ section.id }} .right-col {
-        display: grid;
-        grid-template-rows: auto 1fr;
-        gap: var(--gap);
-    }
+  /* Columna derecha */
+  #mymy-grid-{{ section.id }} .right-col {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: var(--gap);
+  }
 
-    #mymy-grid-{{ section.id }} .mini-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: var(--gap);
-    }
+  #mymy-grid-{{ section.id }} .mini-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap);
+  }
 
-    /* Cards */
-    #mymy-grid-{{ section.id }} .card {
-        background: var(--card-bg);
-        border-radius: var(--radius);
-        border: 2px solid var(--accent);
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
+  /* Cards */
+  #mymy-grid-{{ section.id }} .card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      border: 2px solid var(--accent);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+  }
 
-    /* Logo */
-    #mymy-grid-{{ section.id }} .brand {
-        display: flex;
-        justify-content: center;
-        padding: 10px;
-    }
-    #mymy-grid-{{ section.id }} .brand-img {
-        max-width: 80px;
-        height: auto;
-    }
+  /* Logo */
+  #mymy-grid-{{ section.id }} .brand {
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+  }
+  #mymy-grid-{{ section.id }} .brand-img {
+      max-width: 80px;
+      height: auto;
+  }
 
-      {% comment %} Esta es la que se ajusta {% endcomment %}
-    .left-col.card {
-  background-color: red;
-}
 
-    /* Productos izquierda */
-    #mymy-grid-{{ section.id }} .prod-stack {
-        display: flex;
-        flex-direction: column;
-        gap: var(--gap);
-        align-items: center;
-    }
-    #mymy-grid-{{ section.id }} .prod-img {
-        width: var(--prod-size) !important;
-        max-width: 100% !important;
-        height: auto !important;
-        object-fit: contain !important;
-        display: block;
-    }
 
-    /* Banner */
-    #mymy-grid-{{ section.id }} .banner-img {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-    }
+  /* Productos izquierda */
+  #mymy-grid-{{ section.id }} .prod-stack {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap);
+      align-items: center;
+  }
+  #mymy-grid-{{ section.id }} .prod-img {
+      width: var(--prod-size) !important;
+      max-width: 100% !important;
+      height: auto !important;
+      object-fit: contain !important;
+      display: block;
+  }
 
-    /* Minis */
-    #mymy-grid-{{ section.id }} .mini-img {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-    }
+  /* Banner */
+  #mymy-grid-{{ section.id }} .banner-img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+  }
 
-    /* Placeholders */
-    #mymy-grid-{{ section.id }} .ph {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #999;
-        background: #fafafa;
-    }
-    #mymy-grid-{{ section.id }} .ph--prod { min-height: 180px; }
-    #mymy-grid-{{ section.id }} .ph--banner { min-height: 220px; }
-    #mymy-grid-{{ section.id }} .ph--mini { min-height: 200px; }
+  /* Minis */
+  #mymy-grid-{{ section.id }} .mini-img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+  }
 
-    /* Responsive */
-    @media (max-width: 980px) {
-        #mymy-grid-{{ section.id }} .grid-wrap {
-            grid-template-columns: 1fr;
-        }
-    }
+  /* Placeholders */
+  #mymy-grid-{{ section.id }} .ph {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      background: #fafafa;
+  }
+  #mymy-grid-{{ section.id }} .ph--prod { min-height: 180px; }
+  #mymy-grid-{{ section.id }} .ph--banner { min-height: 220px; }
+  #mymy-grid-{{ section.id }} .ph--mini { min-height: 200px; }
+
+  /* Responsive */
+  @media (max-width: 980px) {
+      #mymy-grid-{{ section.id }} .grid-wrap {
+          grid-template-columns: 1fr;
+      }
+  }
 </style>
 
 {% schema %}
@@ -211,8 +232,30 @@
   "settings": [
     { "type": "color", "id": "accent", "label": "Color borde", "default": "#f8ccd2" },
     { "type": "range", "id": "radius", "label": "Radio esquinas (px)", "min": 0, "max": 30, "step": 1, "default": 16 },
-    { "type": "range", "id": "gap", "label": "Espacio entre cards (px)", "min": 8, "max": 32, "step": 1, "default": 12 },
-    { "type": "range", "id": "prod_size", "label": "Tamaño productos izquierda (px)", "min": 100, "max": 400, "step": 10, "default": 220 }
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Espacio entre cards (px)",
+      "min": 8,
+      "max": 32,
+      "step": 1,
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "prod_size",
+      "label": "Tamaño productos izquierda (px)",
+      "min": 100,
+      "max": 400,
+      "step": 10,
+      "default": 220
+    },
+    {
+      "type": "color",
+      "id": "left_card_bg",
+      "label": "Color de fondo - tarjeta izquierda",
+      "default": "#ff0000"
+    }
   ],
   "blocks": [
     {
