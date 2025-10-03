@@ -446,8 +446,7 @@
         "accent": "#baa7aa",
         "radius": 16,
         "gap": 11,
-        "logo_max_width": 80,
-        "prod_img_max_width": 170
+        "prod_size": 250
       }
     }
   },
