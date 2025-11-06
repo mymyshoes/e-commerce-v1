@@ -531,7 +531,7 @@
           "name": "t:names.collection_card",
           "static": true,
           "settings": {
-            "placement": "below_image",
+            "placement": "on_image",
             "horizontal_alignment": "center",
             "vertical_alignment": "center",
             "collection_card_gap": 4,
@@ -543,31 +543,6 @@
             "border_radius": 12
           },
           "blocks": {
-            "collection_title_RUgbF3": {
-              "type": "collection-title",
-              "name": "t:names.collection_title",
-              "settings": {
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "h5",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 7,
-                "padding-block-end": 10,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
             "collection-card-image": {
               "type": "_collection-card-image",
               "name": "t:names.collection_card_image",
@@ -586,9 +561,7 @@
               "blocks": {}
             }
           },
-          "block_order": [
-            "collection_title_RUgbF3"
-          ]
+          "block_order": []
         }
       },
       "block_order": [
@@ -600,8 +573,7 @@
           "casual",
           "botas-botines",
           "deportivos",
-          "dotaciones",
-          "zuecos"
+          "dotaciones"
         ],
         "layout_type": "bento",
         "carousel_on_mobile": false,
