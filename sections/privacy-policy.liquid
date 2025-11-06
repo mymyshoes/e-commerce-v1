@@ -1,0 +1,70 @@
+{% comment %}
+  Section: privacy-policy
+  - Muestra un H1 editable y el contenido de la política.
+  - Si no completas el Rich text, tomará el page.content (contenido de la página).
+{% endcomment %}
+
+<section class="privacy-policy section">
+    <div class="container">
+        <h1 class="h1">
+            {{ section.settings.heading | default: page.title | escape }}
+        </h1>
+
+        {% if section.settings.show_updated and (section.settings.updated_text != blank or section.settings.updated_date != blank) %}
+            <p class="policy-updated">
+                {{ section.settings.updated_text | escape }}
+                {% if section.settings.updated_date != blank %} {{ section.settings.updated_date | escape }}{% endif %}
+            </p>
+        {% endif %}
+
+        <div class="rte">
+            {% if section.settings.body != blank %}
+                {{ section.settings.body }}
+            {% else %}
+                {{ page.content }}
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Política de Privacidad",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Título (H1)",
+      "default": "Política de Privacidad"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_updated",
+      "label": "Mostrar línea de 'Última actualización'",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "updated_text",
+      "label": "Etiqueta",
+      "default": "Última actualización:"
+    },
+    {
+      "type": "text",
+      "id": "updated_date",
+      "label": "Fecha (texto libre)",
+      "default": ""
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Contenido de la política (opcional)",
+      "info": "Si lo dejas vacío, se mostrará el contenido de la página (page.content).",
+      "default": "<p>Aquí va tu política de privacidad.</p>"
+    }
+  ],
+  "presets": [
+    { "name": "Política de Privacidad" }
+  ]
+}
+{% endschema %}
