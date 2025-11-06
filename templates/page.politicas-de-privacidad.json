@@ -59,6 +59,7 @@
     },
     "privacy_policy_c79m4A": {
       "type": "privacy-policy",
+      "disabled": true,
       "name": "Política de Privacidad",
       "settings": {
         "heading": "Política de Privacidad",
