@@ -175,7 +175,7 @@
           "dotaciones",
           "zuecos"
         ],
-        "layout_type": "carousel",
+        "layout_type": "grid",
         "carousel_on_mobile": false,
         "columns": 4,
         "mobile_columns": "2",
@@ -441,6 +441,7 @@
         "small_left_UWByhj",
         "small_right_NfKhre"
       ],
+      "disabled": true,
       "name": "MYMY Grid",
       "settings": {
         "accent": "#baa7aa",
