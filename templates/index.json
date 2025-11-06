@@ -13,7 +13,7 @@
       "type": "Hero-banner-carrousel",
       "name": "Carrusel 4 (desktop + móvil)",
       "settings": {
-        "desktop_1": "shopify://shop_images/banner-principal.png",
+        "desktop_1": "shopify://shop_images/Banner-Principal-Mymy-Shoes.jpg",
         "alt_1": "",
         "link_1": "",
         "alt_2": "",
@@ -197,7 +197,7 @@
       "type": "banner-responsive",
       "name": "Banner Responsive",
       "settings": {
-        "image_pc": "shopify://shop_images/Whisk_7207f7a78f545728dc1444f68117aeaadr.jpg",
+        "image_pc": "shopify://shop_images/Banner-Principal-Mymy-Shoes-2.jpg",
         "banner_link": "https://mymyshoess.myshopify.com/products/cross-blanco?variant=43409647632493"
       }
     },
