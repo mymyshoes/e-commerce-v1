@@ -1,19 +1,33 @@
 <section id="footer-{{ section.id }}" class="footer-mymy">
     <div class="footer__wrap">
 
-        {%- comment -%} === 1) SIC (logo + link) === {%- endcomment -%}
-        <div class="footer__col footer__sic">
-            {% if section.settings.sic_heading != blank %}
-                <h4 class="footer__title">{{ section.settings.sic_heading | escape }}</h4>
+        {%- comment -%} === 1) BRAND: Logo + Redes (sin texto) === {%- endcomment -%}
+        <div class="footer__col footer__brandcol">
+            {% if section.settings.logo != blank %}
+                <a href="{{ routes.root_url }}" class="footer__logo" aria-label="{{ shop.name }}">
+                    {{ section.settings.logo | image_url: width: 240 | image_tag: alt: shop.name }}
+                </a>
+            {% else %}
+                <span class="footer__shop">{{ shop.name }}</span>
             {% endif %}
 
-            {% if section.settings.sic_image != blank %}
-                <a href="{{ section.settings.sic_url | default: '#' }}"
-                   {% if section.settings.sic_new_tab %}target="_blank" rel="noopener"{% endif %}
-                   class="footer__sic-link">
-                    {{ section.settings.sic_image | image_url: width: 320 | image_tag: alt: 'Superintendencia de Industria y Comercio' }}
-                </a>
-            {% endif %}
+            <div class="footer__social">
+                {% if section.settings.instagram_url != blank %}
+                    <a href="{{ section.settings.instagram_url }}" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M7.75 2A5.75 5.75 0 0 0 2 7.75v8.5A5.75 5.75 0 0 0 7.75 22h8.5A5.75 5.75 0 0 0 22 16.25v-8.5A5.75 5.75 0 0 0 16.25 2h-8.5zm0 1.5h8.5A4.25 4.25 0 0 1 20.5 7.75v8.5a4.25 4.25 0 0 1-4.25 4.25h-8.5A4.25 4.25 0 0 1 3.5 16.25v-8.5A4.25 4.25 0 0 1 7.75 3.5zm8 1.25a.75.75 0 0 0 0 1.5h.01a.75.75 0 0 0 0-1.5h-.01zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 1.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7z"/></svg>
+                    </a>
+                {% endif %}
+                {% if section.settings.facebook_url != blank %}
+                    <a href="{{ section.settings.facebook_url }}" target="_blank" rel="noopener" aria-label="Facebook" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.1 3-3.1.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.5l-.4 3h-2.1v7A10 10 0 0 0 22 12"/></svg>
+                    </a>
+                {% endif %}
+                {% if section.settings.tiktok_url != blank %}
+                    <a href="{{ section.settings.tiktok_url }}" target="_blank" rel="noopener" aria-label="TikTok" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12.75 2h3.5a6.5 6.5 0 0 0 6.5 6.5v3.1a9.6 9.6 0 0 1-6.5-2.1V17a7 7 0 1 1-7-7c.3 0 .5 0 .75.05V13a3.5 3.5 0 1 0 3.5 3.5V2z"/></svg>
+                    </a>
+                {% endif %}
+            </div>
         </div>
 
         {%- comment -%} === 2) AYUDA (menú) === {%- endcomment -%}
@@ -60,34 +74,6 @@
 
     {% if section.settings.show_bottom %}
         <div class="footer__bottom">
-            <div class="footer__brand" {% unless section.settings.show_brand_row %}style="display:none"{% endunless %}>
-                {% if section.settings.logo != blank %}
-                    <a href="{{ routes.root_url }}" class="footer__logo">
-                        {{ section.settings.logo | image_url: width: 220 | image_tag: alt: shop.name }}
-                    </a>
-                {% else %}
-                    <span class="footer__shop">{{ shop.name }}</span>
-                {% endif %}
-
-                <div class="footer__social">
-                    {% if section.settings.instagram_url != blank %}
-                        <a href="{{ section.settings.instagram_url }}" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M7.75 2A5.75 5.75 0 0 0 2 7.75v8.5A5.75 5.75 0 0 0 7.75 22h8.5A5.75 5.75 0 0 0 22 16.25v-8.5A5.75 5.75 0 0 0 16.25 2h-8.5zm0 1.5h8.5A4.25 4.25 0 0 1 20.5 7.75v8.5a4.25 4.25 0 0 1-4.25 4.25h-8.5A4.25 4.25 0 0 1 3.5 16.25v-8.5A4.25 4.25 0 0 1 7.75 3.5zm8 1.25a.75.75 0 0 0 0 1.5h.01a.75.75 0 0 0 0-1.5h-.01zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 1.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7z"/></svg>
-                        </a>
-                    {% endif %}
-                    {% if section.settings.facebook_url != blank %}
-                        <a href="{{ section.settings.facebook_url }}" target="_blank" rel="noopener" aria-label="Facebook" class="social-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.1 3-3.1.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.5l-.4 3h-2.1v7A10 10 0 0 0 22 12"/></svg>
-                        </a>
-                    {% endif %}
-                    {% if section.settings.tiktok_url != blank %}
-                        <a href="{{ section.settings.tiktok_url }}" target="_blank" rel="noopener" aria-label="TikTok" class="social-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12.75 2h3.5a6.5 6.5 0 0 0 6.5 6.5v3.1a9.6 9.6 0 0 1-6.5-2.1V17a7 7 0 1 1-7-7c.3 0 .5 0 .75.05V13a3.5 3.5 0 1 0 3.5 3.5V2z"/></svg>
-                        </a>
-                    {% endif %}
-                </div>
-            </div>
-
             <p class="footer__copy">© {{ 'now' | date: '%Y' }} {{ shop.name }}. {{ section.settings.bottom_text }}</p>
         </div>
     {% endif %}
@@ -100,22 +86,21 @@
         display:grid; gap:32px;
         grid-template-columns: 1.2fr 1fr 1fr 1.2fr; align-items:flex-start;
     }
+    .footer__logo img { max-width:200px; height:auto; }
+    .footer__shop { font-weight:700; font-size:1.1rem; }
+
     .footer__title { margin:0 0 12px; font-weight:700; letter-spacing:.02em; }
     .footer__links { list-style:none; margin:0; padding:0; display:grid; gap:8px; }
     .footer__links a { color:#fff; text-decoration:none; opacity:.9; font-size:.95rem; }
     .footer__links a:hover { opacity:1; text-decoration:underline; }
 
-    .footer__sic img { max-width:220px; height:auto; }
     .footer__contact { border:1px solid rgba(255,255,255,.25); border-radius:10px; padding:16px; }
 
-    .footer__bottom { border-top:1px solid rgba(255,255,255,.15); padding:16px 20px 28px; }
-    .footer__brand { display:flex; gap:16px; align-items:center; justify-content:space-between; margin-bottom:8px; }
-    .footer__logo img { max-width:160px; height:auto; }
-    .footer__shop { font-weight:700; font-size:1.1rem; }
-
-    .footer__social { display:flex; gap:12px; }
+    .footer__social { display:flex; gap:12px; margin-top:12px; }
     .footer__social a { display:inline-flex; width:28px; height:28px; color:#fff; }
     .footer__social svg { width:20px; height:20px; display:block; }
+
+    .footer__bottom { border-top:1px solid rgba(255,255,255,.15); padding:16px 20px 28px; }
     .footer__copy { opacity:.8; font-size:.9rem; margin:0; }
 
     @media (max-width: 990px){
@@ -123,7 +108,6 @@
     }
     @media (max-width: 640px){
         .footer__wrap { grid-template-columns: 1fr; }
-        .footer__sic img { max-width:200px; }
     }
 </style>
 
@@ -131,11 +115,11 @@
 {
   "name": "Footer MYMY",
   "settings": [
-    /* --- SIC --- */
-    { "type": "text", "id": "sic_heading", "label": "Título SIC", "default": "SUPERINTENDENCIA DE INDUSTRIA Y COMERCIO" },
-    { "type": "image_picker", "id": "sic_image", "label": "Logo SIC" },
-    { "type": "url", "id": "sic_url", "label": "Enlace SIC", "default": "https://www.sic.gov.co/" },
-    { "type": "checkbox", "id": "sic_new_tab", "label": "Abrir SIC en nueva pestaña", "default": true },
+    /* --- BRAND (logo + redes) --- */
+    { "type": "image_picker", "id": "logo", "label": "Logo MiMY" },
+    { "type": "url", "id": "instagram_url", "label": "Instagram URL" },
+    { "type": "url", "id": "facebook_url", "label": "Facebook URL" },
+    { "type": "url", "id": "tiktok_url", "label": "TikTok URL" },
 
     /* --- Menús --- */
     { "type": "text", "id": "menu_1_title", "label": "Título menú 1", "default": "AYUDA" },
@@ -149,12 +133,7 @@
     { "type": "richtext", "id": "contact_body", "label": "Contenido contacto", "default": "<p><strong>Notificaciones judiciales</strong><br>Razón social: FENISE SAS<br>NIT: 901.689.425-4<br>Dirección: CARRERA 70 C # 79 - 51<br>Correo: juridica@santorini.com.co</p><p><strong>Servicio al cliente</strong><br>WhatsApp: +57 321 967 8190<br>Mail: servicioalcliente@santorini.com.co</p><p><strong>Tienda online</strong><br>WhatsApp: +57 310 488 8452<br>Mail: eshop@santorini.com.co</p>" },
 
     /* --- Franja inferior --- */
-    { "type": "checkbox", "id": "show_bottom", "label": "Mostrar franja inferior (logo, redes y copyright)", "default": true },
-    { "type": "checkbox", "id": "show_brand_row", "label": "Mostrar logo y redes en la franja inferior", "default": false },
-    { "type": "image_picker", "id": "logo", "label": "Logo (franja inferior opcional)" },
-    { "type": "url", "id": "instagram_url", "label": "Instagram URL" },
-    { "type": "url", "id": "facebook_url", "label": "Facebook URL" },
-    { "type": "url", "id": "tiktok_url", "label": "TikTok URL" },
+    { "type": "checkbox", "id": "show_bottom", "label": "Mostrar franja inferior (copyright)", "default": true },
     { "type": "text", "id": "bottom_text", "label": "Texto copyright", "default": "Todos los derechos reservados." }
   ],
   "presets": [
