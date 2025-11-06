@@ -19,14 +19,14 @@
         "instagram_url": "https://www.instagram.com/mymy.shoescol?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
         "facebook_url": "https://www.facebook.com/profile.php?id=61576805021721",
         "tiktok_url": "https://www.tiktok.com/@mymyshoes.col?is_from_webapp=1&sender_device=pc",
-        "text": "Let’s stay in touch! Sign up to our newsletter and get the best deals!",
-        "show_newsletter": true,
-        "newsletter_placeholder": "Insert your email address here",
-        "newsletter_btn": "Subscribe now",
-        "menu_1_title": "Help",
+        "menu_1_title": "Politicas de privacidad",
         "menu_1": "",
         "menu_2_title": "Other",
-        "menu_2": ""
+        "menu_2": "",
+        "contact_heading": "CONTÁCTANOS",
+        "contact_body": "<p><strong>Notificaciones judiciales</strong><br/>Razón social: FENISE SAS<br/>NIT: 901.689.425-4<br/>Dirección: CARRERA 70 C # 79 - 51<br/>Correo: juridica@santorini.com.co</p><p><strong>Servicio al cliente</strong><br/>WhatsApp: +57 321 967 8190<br/>Mail: servicioalcliente@santorini.com.co</p><p><strong>Tienda online</strong><br/>WhatsApp: +57 310 488 8452<br/>Mail: eshop@santorini.com.co</p>",
+        "show_bottom": true,
+        "bottom_text": "Todos los derechos reservados."
       }
     },
     "footer": {
