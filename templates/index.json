@@ -109,7 +109,7 @@
             "collection_card_gap": 4,
             "inherit_color_scheme": false,
             "color_scheme": "scheme-5",
-            "border": "none",
+            "border": "solid",
             "border_width": 1,
             "border_opacity": 100,
             "border_radius": 12
@@ -177,7 +177,7 @@
         ],
         "layout_type": "carousel",
         "carousel_on_mobile": false,
-        "columns": 5,
+        "columns": 4,
         "mobile_columns": "2",
         "mobile_card_size": "60cqw",
         "columns_gap": 8,
