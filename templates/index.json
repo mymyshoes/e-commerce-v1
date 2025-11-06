@@ -199,6 +199,7 @@
       "name": "Banner Responsive",
       "settings": {
         "image_pc": "shopify://shop_images/Banner-Principal-Mymy-Shoes-2.jpg",
+        "image_mobile": "shopify://shop_images/Banner-Principal-Mymy-Shoes-MOVIL.jpg",
         "banner_link": "https://mymyshoess.myshopify.com/products/cross-blanco?variant=43409647632493"
       }
     },
