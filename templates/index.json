@@ -572,10 +572,9 @@
       "name": "t:names.collections_carousel",
       "settings": {
         "collection_list": [
-          "casual",
-          "botas-botines",
-          "deportivos",
-          "dotaciones"
+          "best-seller",
+          "dos-x-uno",
+          "navidad"
         ],
         "layout_type": "bento",
         "carousel_on_mobile": false,
