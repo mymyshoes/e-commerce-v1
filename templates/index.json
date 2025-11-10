@@ -572,9 +572,10 @@
       "name": "t:names.collections_carousel",
       "settings": {
         "collection_list": [
-          "best-seller",
+          "navidad",
           "dos-x-uno",
-          "navidad"
+          "best-seller",
+          "nueva-coleccion"
         ],
         "layout_type": "bento",
         "carousel_on_mobile": false,
