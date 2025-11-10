@@ -602,7 +602,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h2>Subscribe to our emails</h2>",
+            "text": "<h2>Suscríbete</h2>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
@@ -627,7 +627,7 @@
         "text_aBpx6J": {
           "type": "text",
           "settings": {
-            "text": "<p>Be the first to know about new collections and special offers. </p>",
+            "text": "<p><br/>Suscríbete con tu correo y recibe antes que nadie nuestras novedades, lanzamientos exclusivos y beneficios solo para miembros.<br/><br/></p>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
