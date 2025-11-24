@@ -1,5 +1,22 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
+    "banner_responsive_7zaDRr": {
+      "type": "banner-responsive",
+      "name": "Banner Responsive",
+      "settings": {
+        "image_pc": "shopify://shop_images/Banner-Principal-Mymy-Shoes.jpg",
+        "banner_link": ""
+      }
+    },
     "main": {
       "type": "main-page",
       "blocks": {
@@ -7,7 +24,7 @@
           "type": "text",
           "name": "t:names.title",
           "settings": {
-            "text": "<h2>{{ closest.page.title }}</h2>",
+            "text": "<h2>Contacto</h2>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
@@ -137,6 +154,7 @@
     }
   },
   "order": [
+    "banner_responsive_7zaDRr",
     "main",
     "form"
   ]
