@@ -95,18 +95,27 @@
     {% endif %}
   >
 {%- endif -%}
-<product-card
+{% comment %} <product-card
   class="product-card"
   data-product-id="{{ product.id }}"
   data-product-variants-size="{{ product.variants.size }}"
   id="product-card-{{ block.id }}"
   data-product-transition="{{ settings.transition_to_main_product }}"
   {{ block.shopify_attributes }}
-  {% if product.compare_at_price > product.price %}
-  {% assign discount = product.compare_at_price | minus: product.price %}
-  {% assign percentage = discount | times: 100 | divided_by: product.compare_at_price %}
-  <span class="badge-discount-product-card">-{{ percentage | round }}%</span>
-{% endif %}
+  {% if no_swatch_selected %}
+    data-no-swatch-selected="true"
+  {% endif %}
+  {% if onboarding %}
+    data-placeholder="true"
+  {% endif %}
+> {% endcomment %}
+  <product-card
+  class="product-card"
+  data-product-id="{{ product.id }}"
+  data-product-variants-size="{{ product.variants.size }}"
+  id="product-card-{{ block.id }}"
+  data-product-transition="{{ settings.transition_to_main_product }}"
+  {{ block.shopify_attributes }}
   {% if no_swatch_selected %}
     data-no-swatch-selected="true"
   {% endif %}
@@ -114,6 +123,12 @@
     data-placeholder="true"
   {% endif %}
 >
+
+  {% if product.compare_at_price > product.price %}
+    {% assign discount = product.compare_at_price | minus: product.price %}
+    {% assign percentage = discount | times: 100 | divided_by: product.compare_at_price %}
+    <span class="badge-discount-product-card">-{{ percentage | round }}%</span>
+  {% endif %}
   <a
     id="{{ product_card_id | md5 }}"
     {% unless onboarding %}
