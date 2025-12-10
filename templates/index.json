@@ -854,7 +854,7 @@
       },
       "name": "Featured collection",
       "settings": {
-        "collection": "casual",
+        "collection": "deportivos",
         "layout_type": "grid",
         "carousel_on_mobile": false,
         "max_products": 8,
