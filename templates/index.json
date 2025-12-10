@@ -542,7 +542,6 @@
       "name": "t:names.collections_carousel",
       "settings": {
         "collection_list": [
-          "dos-x-uno",
           "navidad",
           "best-seller",
           "nueva-coleccion"
