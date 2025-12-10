@@ -880,32 +880,32 @@
           "type": "testimonio",
           "settings": {
             "foto_usuario": "shopify://shop_images/ChatGPT_Image_23_abr_2025_22_09_50.png",
-            "nombre_usuario": "Nombre Apellido",
-            "comentario_usuario": "Este es un comentario de ejemplo del cliente satisfecho."
+            "nombre_usuario": "Laura Castañeda",
+            "comentario_usuario": "“Me llegaron súper rápido y el empaque es divino. Se nota la calidad desde que abres la caja. ¡Volveré a comprar!”"
           }
         },
         "testimonio_dLTpHm": {
           "type": "testimonio",
           "settings": {
             "foto_usuario": "shopify://shop_images/ChatGPT_Image_23_abr_2025_22_03_59.png",
-            "nombre_usuario": "Nombre Apellido",
-            "comentario_usuario": "Este es un comentario de ejemplo del cliente satisfecho."
+            "nombre_usuario": "Andrés Salazar",
+            "comentario_usuario": "“Muy buena atención y el envío fue puntual. Los zapatos se ven aún mejores en persona. Súper recomendado.”"
           }
         },
         "testimonio_RtUAiP": {
           "type": "testimonio",
           "settings": {
             "foto_usuario": "shopify://shop_images/ChatGPT_Image_23_abr_2025_22_03_25.png",
-            "nombre_usuario": "Nombre Apellido",
-            "comentario_usuario": "Este es un comentario de ejemplo del cliente satisfecho."
+            "nombre_usuario": "María Fernanda Gómez",
+            "comentario_usuario": "“El envío fue más rápido de lo que esperaba. Los zapatos quedaron perfectos y se sienten muy cómodos desde el primer uso.”"
           }
         },
         "testimonio_GTtbNG": {
           "type": "testimonio",
           "settings": {
             "foto_usuario": "shopify://shop_images/ChatGPT_Image_23_abr_2025_22_03_23.png",
-            "nombre_usuario": "Nombre Apellido",
-            "comentario_usuario": "Este es un comentario de ejemplo del cliente satisfecho."
+            "nombre_usuario": "Daniela Restrepo",
+            "comentario_usuario": "“Excelente servicio. Hice la compra en la noche y al otro día ya estaban despachados. ¡Todo impecable!”"
           }
         }
       },
@@ -915,6 +915,7 @@
         "testimonio_RtUAiP",
         "testimonio_GTtbNG"
       ],
+      "custom_css": [],
       "name": "Sección de Testimonios",
       "settings": {
         "titulo_seccion": "Testimonios"
