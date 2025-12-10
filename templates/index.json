@@ -200,7 +200,7 @@
       "settings": {
         "image_pc": "shopify://shop_images/Banner-Principal-Mymy-Shoes-2.jpg",
         "image_mobile": "shopify://shop_images/Banner-Principal-Mymy-Shoes-MOVIL.jpg",
-        "banner_link": "https://mymyshoess.myshopify.com/products/cross-blanco?variant=43409647632493"
+        "banner_link": "shopify://collections/10-de-descuento"
       }
     },
     "product_list_fa6P9H": {
