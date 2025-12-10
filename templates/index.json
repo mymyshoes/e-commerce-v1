@@ -547,7 +547,7 @@
           "best-seller",
           "nueva-coleccion"
         ],
-        "layout_type": "bento",
+        "layout_type": "carousel",
         "carousel_on_mobile": true,
         "columns": 3,
         "mobile_columns": "2",
