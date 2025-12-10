@@ -542,14 +542,13 @@
       "name": "t:names.collections_carousel",
       "settings": {
         "collection_list": [
-          "dos-x-uno",
           "navidad",
           "best-seller",
           "nueva-coleccion"
         ],
         "layout_type": "bento",
-        "carousel_on_mobile": false,
-        "columns": 4,
+        "carousel_on_mobile": true,
+        "columns": 3,
         "mobile_columns": "2",
         "mobile_card_size": "60cqw",
         "columns_gap": 8,
