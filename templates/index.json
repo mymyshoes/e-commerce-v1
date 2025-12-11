@@ -199,6 +199,7 @@
       "name": "Banner Responsive",
       "settings": {
         "image_pc": "shopify://shop_images/Banner-Principal-Mymy-Shoes-2_1.jpg",
+        "image_mobile": "shopify://shop_images/Banner_mobill_-_descuentoMesa_de_trabajo_1_copia_2.jpg",
         "banner_link": "shopify://collections/10-de-descuento"
       }
     },
